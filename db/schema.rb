@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_26_160444) do
+ActiveRecord::Schema.define(version: 2018_07_14_164721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,12 @@ ActiveRecord::Schema.define(version: 2018_06_26_160444) do
     t.string "long"
     t.bigint "type_id"
     t.index ["type_id"], name: "index_packages_on_type_id"
+  end
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "travellers", force: :cascade do |t|
