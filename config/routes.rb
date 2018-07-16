@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'subscribers/new'
   devise_for :users, controllers: { registrations: "registrations"}
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -16,6 +17,6 @@ Rails.application.routes.draw do
   end
 
   get "/coming-soon", to: "pages#coming_soon", as: "coming_soon"
-
+  resources :subscribers, only: [:create, :new]
 
 end
