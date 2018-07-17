@@ -1,5 +1,6 @@
 class SubscribersController < ApplicationController
   skip_before_action :authenticate_user!
+
   def index
     @subscribers = Subscriber.all.order("created_at DESC")
   end
