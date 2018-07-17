@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_14_164721) do
+ActiveRecord::Schema.define(version: 2018_07_16_160208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2018_07_14_164721) do
     t.index ["package_id"], name: "index_bookings_on_package_id"
     t.index ["type_id"], name: "index_bookings_on_type_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "name"
+    t.text "comment"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "origins", force: :cascade do |t|
@@ -68,6 +77,13 @@ ActiveRecord::Schema.define(version: 2018_07_14_164721) do
     t.string "long"
     t.bigint "type_id"
     t.index ["type_id"], name: "index_packages_on_type_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "subscribers", force: :cascade do |t|
@@ -123,6 +139,7 @@ ActiveRecord::Schema.define(version: 2018_07_14_164721) do
   add_foreign_key "bookings", "packages"
   add_foreign_key "bookings", "types"
   add_foreign_key "bookings", "users"
+  add_foreign_key "comments", "posts"
   add_foreign_key "package_origins", "origins"
   add_foreign_key "package_origins", "packages"
   add_foreign_key "packages", "types"
