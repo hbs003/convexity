@@ -8,5 +8,10 @@ class PagesController < ApplicationController
   def coming_soon
   end
 
+  def adm_painel
+    @subscribers = Subscriber.all.order("created_at DESC")
+    @posts = Post.all.order("created_at DESC")
+  end
+
 
 end
