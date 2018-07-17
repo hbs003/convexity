@@ -21,6 +21,10 @@ gem 'money-rails'
 gem 'stripe'
 gem 'twilio-ruby'
 
+#gems added
+gem 'dotenv-rails', groups: [:development, :test]
+
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
