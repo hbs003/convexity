@@ -6,12 +6,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_one :traveller
 
-  validates :phone, presence: :true
 
 
-  def configure_permitted_parameters
-    # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:phone])
-  end
+
+  # def configure_permitted_parameters
+  #   # For additional fields in app/views/devise/registrations/new.html.erb
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:phone])
+  # end
 
 end
