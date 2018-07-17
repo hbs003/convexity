@@ -1,8 +1,0 @@
-<form action="<%= booking_path(@booking) %>" method="POST">
-  <input type="hidden" name="_method" value="patch">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-
-    <%= render '/shared/banners/banner_booking_2' %>
-
-    <%= render '/shared/update_cards_booking/personal_details' %>
-</form>
