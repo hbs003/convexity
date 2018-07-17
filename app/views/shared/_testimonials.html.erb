@@ -10,10 +10,10 @@
       <%= link_to post_path(post) do %>
         <div class="col-xs-12 col-sm-4">
           <div class="card" >
-           <div class="card-testimonial card-testimonial" style="background-image:linear-gradient(-225deg, rgba(30,30,30,0.4) 0%, rgba(30,30,30,0.1) 50%),  url('https://images.unsplash.com/photo-1503970999490-4404449dc349?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7e027cf07fe6c63cf98abc0e09ee95bd&auto=format&fit=crop&w=969&q=80')">
+           <div class="card-testimonial card-testimonial" style="background-image:linear-gradient(-225deg, rgba(30,30,30,0.4) 0%, rgba(30,30,30,0.1) 50%),  url('<%= cl_image_path post.photo, crop: :fill %>')">
             <div class="card-description--blue"
               data-hover="Clique aqui para saber mais!">
-              <p> Roma e Milão: R$ 2.499 </p>
+              <p> <%= post.call %> </p>
              </div>
            </div>
           </div>
