@@ -10,9 +10,9 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.new(subscriber_params)
     if @subscriber.valid?
       @subscriber.save
-      flash[:success] = "You have subscribed successfully"
+      flash[:success] = "Parabéns, sua inscrição foi um sucesso!"
     else
-      flash[:error] = "Problem in subscription: #{subscriber.errors.full_messages.join(', ')}"
+      flash[:error] = "Houve um erro na sua inscrição: #{@subscriber.errors.full_messages.join(', ')}"
     end
     redirect_to root_path
   end
