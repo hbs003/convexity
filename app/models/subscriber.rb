@@ -10,3 +10,5 @@ class Subscriber < ApplicationRecord
     SubscribeToNewsletterService.new(self).call
   end
 end
+
+
