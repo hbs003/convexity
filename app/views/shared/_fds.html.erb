@@ -1,0 +1,30 @@
+<div class="testimonials">
+
+  <h2>Fuja neste fim de semana<span class="point-orange">...</span></h2>
+  <h3>Encontre aqui as melhores alternativas para um fim de semana inesquecível.</h3>
+
+
+  <div class="row">
+
+    <% @posts.each do |post| %>
+      <% if post.purpose=="fds" %>
+        <%= link_to post_path(post) do %>
+          <div class="col-xs-12 col-sm-4">
+            <div class="card" >
+             <div class="card-testimonial card-testimonial" style="background-image:linear-gradient(-225deg, rgba(30,30,30,0.4) 0%, rgba(30,30,30,0.1) 50%),  url('<%= cl_image_path post.photo, crop: :fill %>')">
+              <div class="card-description--blue"
+                data-hover="Clique aqui para saber mais!">
+                <p> <%= post.call %> </p>
+               </div>
+             </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+
+
+
+
+ </div>
+</div>
