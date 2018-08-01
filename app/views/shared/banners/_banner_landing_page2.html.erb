@@ -1,13 +1,16 @@
-<div class="devise-container2 image-devise2" style="height:20vh;">
+
+
+
+<div class="banner banner-landing-page2 devise-container2" style="background-size: cover;">
   <div class="devise-content-container">
-    <h2>Cadastre-se aqui.</h2>
-    <p>Receba as novas opções de investimentos em primeira mão.</p>
+    <h2 style="color:black;">Cadastre-se aqui.</h2>
+    <p style="color:black;">Receba as novas opções de investimentos em primeira mão.</p>
 
 
    <%= form_for :subscriber, url: subscribers_path do |f| %>
-     <span><label for="email">Email</label></span>
+     <span><label for="email" style="color:black;">Email</label></span>
      <div class="form-inputs">
-     <%= f.text_field :email, class: 'form-control' %>
+     <%= f.text_field :email, class: 'form-control', placeholder: 'Insira aqui o seu email.' %>
      </div>
 
      <div class="form-actions">
@@ -17,10 +20,3 @@
    <%end%>
   </div>
 </div>
-<% [:success, :error].each do |key| %>
-  <% if flash[key] %>
-    <div class="<%= key %>" id="flash">
-      <%= flash[key] %>
-    </div>
-   <% end %>
-<% end %>

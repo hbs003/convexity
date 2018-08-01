@@ -1,22 +1,14 @@
 <div class="navbar-wagon navbar-lp">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <span class="name-logo">convexitYCapital</span>
+    <span class="name-logo">|YC|</span>
   <% end %>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+  <div class="navbar-wagon-right">
 
     <% if user_signed_in? %>
-
-      <!-- Links when logged in -->
-
-      <div class="booknow">
-          <%= link_to "Investidores", "bookings/new", class: "navbar-wagon-item navbar-wagon-link" %>
-      </div>
-      <div class="booknow">
-          <%= link_to "Startups", "bookings/new", class: "navbar-wagon-item navbar-wagon-link" %>
-      </div>
 
       <!-- Avatar with dropdown menu -->
      <div class="navbar-wagon-item">
@@ -24,14 +16,19 @@
           <%= image_tag "paper-plane.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
+              <%= link_to "Meu Perfil", "bookings/new", class: "navbar-wagon-item navbar-wagon-link" %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
+              <%= link_to "Startups", "bookings/new", class: "navbar-wagon-item navbar-wagon-link" %>
+            </li>
+            <li>
+              <%= link_to "Investidores", "bookings/new", class: "navbar-wagon-item navbar-wagon-link" %>
+            </li>
+            <li>
+              <%= link_to "Como funciona?", "bookings/new", class: "navbar-wagon-item navbar-wagon-link" %>
+            </li>
+            <li>
+              <%= link_to "Equipe", "bookings/new", class: "navbar-wagon-item navbar-wagon-link" %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
@@ -44,7 +41,6 @@
     <% else %>
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= image_tag "paper-plane.png", class: "avatar", id: "navbar-wagon-menu"%>
     <% end %>
   </div>
 </div>

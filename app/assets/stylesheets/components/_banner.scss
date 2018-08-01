@@ -56,7 +56,32 @@
   }
   .banner-landing-page2 {
     height: 80vh;
-    background-image: image-url("ny.jpg");
+    background-image: image-url("london.jpg");
+
+
+    h1 {
+      font-weight: 900;
+      font-size: 95px;
+      margin-top: 5px;
+      margin-bottom: 0;
+      color: white;
+
+      @media screen and (max-width: 1200px) {
+        font-size: 80px;
+      }
+
+      @media screen and (max-width: 991px) {
+        font-size: 70px;
+      }
+
+      @media screen and (max-width: 767px) {
+        font-size: 50px;
+      }
+    }
+  }
+  .banner-landing-page3 {
+    height: 100vh;
+    background-image: image-url("office.jpg");
 
 
     h1 {
@@ -80,9 +105,17 @@
     }
 
   }
+
   .banner-text {
     position: absolute;
     top: 45vh;
+    padding-left: 5%;
+    width: 100%;
+  }
+
+  .banner-text2 {
+    position: absolute;
+    top: 30vh;
     padding-left: 5%;
     width: 100%;
   }
