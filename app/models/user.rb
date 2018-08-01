@@ -4,7 +4,10 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_one :traveller
+  has_many :enterprises, through: :stocks
+  has_many :reviews, dependent: :destroy
+  has_many :stocks
+  validates :email, presence: true
 
 
 

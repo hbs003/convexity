@@ -10,30 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_20_192123) do
+ActiveRecord::Schema.define(version: 2018_08_01_220847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: :cascade do |t|
+  create_table "enterprises", force: :cascade do |t|
     t.string "name"
-    t.text "comment"
-    t.bigint "post_id"
+    t.text "abstract"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
+  create_table "founders", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "function"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "author"
-    t.string "date"
-    t.string "call"
-    t.string "photo"
-    t.string "purpose"
+    t.bigint "enterprise_id"
+    t.index ["enterprise_id"], name: "index_founders_on_enterprise_id"
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.text "description"
+    t.float "share"
+    t.integer "pu"
+    t.integer "units"
+    t.string "final_date"
+    t.bigint "enterprise_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enterprise_id"], name: "index_offers_on_enterprise_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "enterprise_id"
+    t.string "content"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enterprise_id"], name: "index_reviews_on_enterprise_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "enterprise_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enterprise_id"], name: "index_stocks_on_enterprise_id"
+    t.index ["user_id"], name: "index_stocks_on_user_id"
   end
 
   create_table "subscribers", force: :cascade do |t|
@@ -59,5 +87,5 @@ ActiveRecord::Schema.define(version: 2018_07_20_192123) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "comments", "posts"
+  add_foreign_key "founders", "enterprises"
 end

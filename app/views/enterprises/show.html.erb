@@ -1,0 +1,12 @@
+<h1>Enterprise#show</h1>
+<h1><%= @enterprise.name %></h1>
+<% @enterprise.founders.each do |founder| %>
+  <ul>
+    <li><%= founder.name %></li>
+  </ul>
+<% end %>
+<p><%= @enterprise.abstract %></p>
+<%= link_to "Delete", enterprise_path(@enterprise),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+<%= link_to "Editar", edit_enterprise_path(@enterprise) %>
