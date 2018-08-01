@@ -8,7 +8,55 @@
 
   .banner-landing-page {
     height: 100vh;
-    background-image: image-url("london.jpg");
+    background-image: linear-gradient(-225deg, rgba(30,30,30,0.4) 0%, rgba(30,30,30,0.1) 50%), image-url("glass.jpg");
+
+
+
+
+    h1 {
+      font-weight: 900;
+      font-size: 95px;
+      margin-top: 5px;
+      margin-bottom: 0;
+      color: black;
+
+      @media screen and (max-width: 1200px) {
+        font-size: 80px;
+      }
+
+      @media screen and (max-width: 991px) {
+        font-size: 70px;
+      }
+
+      @media screen and (max-width: 767px) {
+        font-size: 50px;
+      }
+    }
+
+    h2 {
+      font-weight: 900;
+      font-size: 70px;
+      margin-top: 5px;
+      margin-bottom: 0;
+      color: black;
+
+      @media screen and (max-width: 1200px) {
+        font-size: 55px;
+      }
+
+      @media screen and (max-width: 991px) {
+        font-size: 40px;
+      }
+
+      @media screen and (max-width: 767px) {
+        font-size: 30px;
+      }
+
+    }
+  }
+  .banner-landing-page2 {
+    height: 80vh;
+    background-image: image-url("ny.jpg");
 
 
     h1 {
@@ -31,28 +79,7 @@
       }
     }
 
-    h2 {
-      font-weight: 900;
-      font-size: 70px;
-      margin-top: 5px;
-      margin-bottom: 0;
-      color: white;
-
-      @media screen and (max-width: 1200px) {
-        font-size: 55px;
-      }
-
-      @media screen and (max-width: 991px) {
-        font-size: 40px;
-      }
-
-      @media screen and (max-width: 767px) {
-        font-size: 30px;
-      }
-
-    }
   }
-
   .banner-text {
     position: absolute;
     top: 45vh;

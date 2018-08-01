@@ -1,0 +1,26 @@
+<div class="devise-container2 image-devise2" style="height:20vh;">
+  <div class="devise-content-container">
+    <h2>Cadastre-se aqui.</h2>
+    <p>Receba as novas opções de investimentos em primeira mão.</p>
+
+
+   <%= form_for :subscriber, url: subscribers_path do |f| %>
+     <span><label for="email">Email</label></span>
+     <div class="form-inputs">
+     <%= f.text_field :email, class: 'form-control' %>
+     </div>
+
+     <div class="form-actions">
+     <%= f.submit "Cadastre-se", {class: "button-form--next2"}%>
+     </div>
+
+   <%end%>
+  </div>
+</div>
+<% [:success, :error].each do |key| %>
+  <% if flash[key] %>
+    <div class="<%= key %>" id="flash">
+      <%= flash[key] %>
+    </div>
+   <% end %>
+<% end %>
