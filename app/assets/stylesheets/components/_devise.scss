@@ -36,3 +36,19 @@
     border-color: #ebccd1;
     color: #a94442;
 }
+
+.devise-container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+
+}
+
+.image-devise2 {
+  background-image: image-url("ny.jpg");
+  filter: grayscale(40%);
+  background-size: cover !important;
+  position: relative;
+  background-position: center;
+}
