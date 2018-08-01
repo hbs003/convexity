@@ -1,0 +1,5 @@
+<%= simple_form_for [@enterprise, @review] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.submit "Criar um comentário", class: "btn btn-primary" %>
+<% end %>

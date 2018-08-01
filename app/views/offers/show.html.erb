@@ -1,0 +1,12 @@
+<h1>Offer#show</h1>
+<h1>Empresa: <%= @offer.enterprise.name %></h1>
+<% @offer.enterprise.founders.each do |founder| %>
+<ul>
+  <li><%= founder.name  %></li>
+</ul>
+<% end %>
+<p>Resumo: <%= @offer.enterprise.abstract %></p>
+<p>Valor Unitário: <%= @offer.pu %></p>
+<p>Descrição da oferta pública: <%= @offer.description %></p>
+<p>Percentual<%= @offer.share %>%</p>
+<p>Quantidade: <%= @offer.units %></p>

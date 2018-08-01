@@ -1,0 +1,7 @@
+<%= simple_form_for [@enterprise, @offer] do |f| %>
+  <%= f.input :description %>
+  <%= f.input :share %>
+  <%= f.input :pu %>
+  <%= f.input :units %>
+  <%= f.submit "Criar uma oferta", class: "btn btn-primary" %>
+<% end %>
