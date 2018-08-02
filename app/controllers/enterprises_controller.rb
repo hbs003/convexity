@@ -35,7 +35,7 @@ class EnterprisesController < ApplicationController
 
   private
   def enterprise_params
-    params.require(:enterprise).permit(:name, :abstract, :founder_id)
+    params.require(:enterprise).permit(:name, :abstract, :founder_id, :photo)
   end
 
   def set_enterprise

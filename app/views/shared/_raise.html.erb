@@ -11,8 +11,14 @@
         <div class="col-xs-12 col-sm-12">
           <div class="card" >
             <div class="card-container">
-              <div class="card-raise" style="background-image:linear-gradient(-225deg, rgba(30,30,30,0.4) 0%, rgba(30,30,30,0.1) 50%),  url('http://75.98.172.84/wp-content/themes/strateg/images/logo.png')">
-              </div>
+              <% if offer.enterprise.photo == nil %>
+                <div class="card-raise" style="background-image:linear-gradient(-225deg, rgba(30,30,30,0.4) 0%, rgba(30,30,30,0.1) 50%),  url('http://nestelpropertiesltd.com/admin/images/10client.jpg')">
+                </div>
+              <% else %>
+                <div class="card-raise" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path offer.enterprise.photo %>')">
+                </div>
+              <% end %>
               <div class="card-title">
                 <h3 style="color:black">Empresa: <%= offer.enterprise.name %></h3>
               </div>

@@ -7,4 +7,5 @@ class Enterprise < ApplicationRecord
   validates :name, presence: true
   validates :abstract, presence: true
   validates :name, uniqueness: true
+  mount_uploader :photo, PhotoUploader
 end
