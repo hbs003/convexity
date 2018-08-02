@@ -123,15 +123,15 @@ margin-top: 12vh;
 .testimonials {
   padding-left: 80px;
   padding-right: 80px;
-  margin-bottom: 15vh;
+  margin-bottom: 5vh;
 
   p{
    text-align:center;
-   justify-content:center;
+   justify-content:flex-start;
    font-size:44px;
    bottom: 34px;
    margin-bottom: 20px;
-   padding-top: 217px;
+   padding-top: 150px;
    font-weight:bolder;
    color: #FFFFFF;
   }
@@ -140,7 +140,7 @@ margin-top: 12vh;
 
 .card-testimonial{
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   margin-top: 20%;
   min-height: 500px;
   min-weight: 400px;
@@ -153,13 +153,60 @@ margin-top: 12vh;
   box-shadow: 1px 1px $light-gray;
 }
 
+.card-container{
+  min-height: 400px;
+  box-shadow: 1px 1px 1px 1px $light-gray;
+}
 
+.card-container:hover{
+  box-shadow: 15px 15px gray;
+}
+
+.card-raise{
+  position: relative;
+  overflow: visible;
+  margin-top: 20%;
+  min-height: 300px;
+  min-weight: 400px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform .2s;
+  font-size:20px;
+  font-color: red;
+  height:90px;
+}
+
+.card-title{
+  position: relative;
+  overflow: hidden;
+  font-size: 32px;
+  right: -10px;
+  top: -360px;
+  padding-right: 10px;
+
+
+}
+
+.card-desc{
+  position: relative;
+  overflow: hidden;
+  color: black;
+  font-size: 22px;
+  right: -10px;
+  top: -30px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+
+}
 .card-description{
   height: 500px;
   font-size:0px;
   color: #FFFFFF;
   transition: transform .2s;
 }
+
+
 
 .card-description--yellow:hover{
   background-color:#41BBD9;
@@ -613,10 +660,10 @@ margin-top: 12vh;
 
 .card-owner {
   position: absolute;
-  right: 55px;
-  top: 10px;
-  height: 200px;
-  width: 200px;
+  right: 85px;
+  top: -40px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
 }
 
