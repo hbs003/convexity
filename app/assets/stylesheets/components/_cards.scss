@@ -167,14 +167,15 @@ margin-top: 12vh;
   overflow: visible;
   margin-top: 20%;
   min-height: 300px;
-  min-weight: 400px;
-  background-size: contain;
+  min-width: 200px;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   transition: transform .2s;
   font-size:20px;
   font-color: red;
   height:90px;
+  padding:5px;
 }
 
 .card-title{
@@ -182,8 +183,9 @@ margin-top: 12vh;
   overflow: hidden;
   font-size: 32px;
   right: -10px;
-  top: -360px;
+  top: -40px;
   padding-right: 10px;
+  font-weight:900;
 
 
 }
