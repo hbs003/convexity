@@ -1,12 +1,39 @@
-<h1>Enterprise#show</h1>
-<h1><%= @enterprise.name %></h1>
-<% @enterprise.founders.each do |founder| %>
-  <ul>
-    <li><%= founder.name %></li>
-  </ul>
-<% end %>
-<p><%= @enterprise.abstract %></p>
-<%= link_to "Delete", enterprise_path(@enterprise),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
-<%= link_to "Editar", edit_enterprise_path(@enterprise) %>
+<div class="summary-container" style="background-color:gray">
+  <div class="summary-container--grid">
+    <div class="grid-summary-general-heading">
+      <span style="color:black">Detalhes da empresa</span>
+    </div>
+    <div class="grid-content-center">
+      <div class="container-summary-content">
+        <div class="style-heading"> <span><%= link_to "Excluir", enterprise_path(@enterprise),
+              method: :delete,
+              data: { confirm: "Tem certeza?" } %>
+          <%= link_to "Editar", edit_enterprise_path(@enterprise) %></span>
+          <%= link_to "Adicionar Fundadores", new_enterprise_founder_path(@enterprise) %></span></div>
+          <div class="style-body">
+
+          <span id="traveller_info"=>Nome da Empresa: </span> <span id="user_info"=> <%= @enterprise.name %>  </span>
+         <br>
+          <% @enterprise.founders.each do |founder| %>
+            <ul>
+              <%= link_to founder_path(founder) do %>
+                <li><%= founder.name %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          <br>
+          <span id="traveller_info"=>Resumo:</span> <span class="text-left" id="user_info"=> <%= @enterprise.abstract %></span><br>
+          <span id="traveller_info"=>Página na web:</span> <span  class="text-left" id="user_info"=> <%= @enterprise.website %> </span><br>
+          <span id="traveller_info"=>Telefone para contato:</span> <span class="text-left"  id="user_info"=><%= @enterprise.phone %> </span><br>
+          <span id="traveller_info" =>Pessoa para contato:</span> <span class="text-left" id="user_info"=> <%= @enterprise.contact %> </span><br>
+          <span id="traveller_info"=>Logo da empresa:</span><div class="card-logo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('<%= cl_image_path @enterprise.photo %>')">
+          </div><br>
+         </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
