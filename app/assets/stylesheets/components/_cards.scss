@@ -190,6 +190,16 @@ margin-top: 12vh;
 
 }
 
+.card-logo{
+  position: relative;
+  overflow: hidden;
+  margin: 10%;
+  height: 300px;
+  width: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .card-desc{
   position: relative;
   overflow: hidden;

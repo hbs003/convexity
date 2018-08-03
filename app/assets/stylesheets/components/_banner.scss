@@ -8,7 +8,7 @@
 
   .banner-landing-page {
     height: 100vh;
-    background-image: linear-gradient(-225deg, rgba(30,30,30,0.4) 0%, rgba(30,30,30,0.1) 50%), image-url("glass.jpg");
+    background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), image-url("glass.jpg");
 
 
 
@@ -81,7 +81,9 @@
   }
   .banner-landing-page3 {
     height: 100vh;
-    background-image: image-url("office.jpg");
+    background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%),image-url("bridge.jpg");
+
+
 
 
     h1 {
@@ -286,5 +288,15 @@
   color: rgb(255, 255, 255);
   opacity: 0.6;
   margin-bottom: 30px;
+}
+
+.grid-content-center{
+  width: 80vw;
+  min-height: 60vh;
+  background-color: $snowwhite;
+  color:black;
+  margin-left: 10vw;
+  margin-top: 10px;
+
 }
 

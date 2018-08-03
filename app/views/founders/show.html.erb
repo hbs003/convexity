@@ -1,6 +1,30 @@
-<h1>Founder#show</h1>
-<h1><%= @founder.enterprise.name %></h1>
-<p><%= @founder.name %></p>
-<p><%= @founder.description %></p>
-<p><%= @founder.function %></p>
+
+
+<div class="summary-container" style="background-color:gray">
+  <div class="summary-container--grid">
+    <div class="grid-summary-general-heading">
+      <span style="color:black">Detalhes do sócio fundador</span>
+    </div>
+    <div class="grid-content-center">
+      <div class="container-summary-content">
+        <div class="style-heading"> <span><%= link_to "Excluir", founder_path(@founder),
+              method: :delete,
+              data: { confirm: "Tem certeza?" } %>
+          <%= link_to "Editar", edit_founder_path(@founder) %>
+            <%= link_to "Minha empresa", enterprise_path(@founder.enterprise.id) %>
+          </span>
+
+          <div class="style-body">
+
+          <span id="traveller_info"=>Nome da Empresa: </span> <span id="user_info"=> <%= @founder.enterprise.name %>  </span>
+         <br>
+          <span id="traveller_info"=>Fundador:</span> <span class="text-left" id="user_info"=> <%= @founder.name %></span><br>
+          <span id="traveller_info"=>Função:</span> <span  class="text-left" id="user_info"=> <%= @founder.function %> </span><br>
+          <span id="traveller_info"=>Descrição:</span> <span class="text-left"  id="user_info"=><%= @founder.description %></span><br>
+         </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 

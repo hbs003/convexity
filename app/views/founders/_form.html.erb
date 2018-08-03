@@ -1,6 +1,6 @@
 <%= simple_form_for [@enterprise, @founder] do |f| %>
-  <%= f.input :description %>
-  <%= f.input :name %>
-  <%= f.input :function %>
+  <%= f.input :name, :label => 'Nome:', :required =>false %>
+  <%= f.input :function, :label => 'Função na empresa:', :required =>false %>
+  <%= f.input :description, :label => 'Descrição resumida:', :required =>false %>
   <%= f.submit "Criar novo fundador", class: "btn btn-primary" %>
 <% end %>
