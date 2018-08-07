@@ -8,6 +8,9 @@
 
   <div class="navbar-wagon-right">
 
+    <%= link_to t(".blog", default: "Blog"), buttercms_blog_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+
     <% if user_signed_in? %>
 
       <!-- Avatar with dropdown menu -->
