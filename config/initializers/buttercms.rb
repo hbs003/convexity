@@ -4,5 +4,5 @@ require 'buttercms-ruby'
 # Otherwise, grab your token at https://buttercms.com/profile/ and set it below
 ButterCMS::api_token = ENV['BUTTER_TOKEN']
 
-# Test mode can be used to setup a staging website for previewing content or for testing content during local development.
-# ButterCMS::test_mode = true
+posts = ButterCMS::Post.search("my favorite post", {page: 1, page_size: 10})
+categories = ButterCMS::Category.all()
