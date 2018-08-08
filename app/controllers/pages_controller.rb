@@ -1,3 +1,4 @@
+require 'buttercms-ruby'
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
@@ -8,7 +9,9 @@ class PagesController < ApplicationController
   def coming_soon
   end
 
-
+  def faq
+    @content = ButterCMS::Content.fetch([:faq_heading, :faq_items]).data
+  end
 
 
 end
