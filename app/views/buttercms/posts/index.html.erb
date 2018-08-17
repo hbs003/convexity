@@ -1,17 +1,111 @@
-<h2>Posts</h2>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- List of posts -->
-<% @posts.each do |post| %>
-  <%= render :partial => 'post', :locals => {:post => post} %>
-<% end %>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
 
-<!-- Pagination links -->
-<div>
-  <% if @previous_page %>
-    <%= link_to "Prev", buttercms_blog_path(:page => @previous_page) %>
-  <% end %>
+    <title>Blog convexit|YC|apital</title>
 
-  <% if @next_page %>
-    <%= link_to "Next", buttercms_blog_path(:page => @next_page) %>
-  <% end %>
-</div>
+    <!-- Loading animation -->
+    <script src="js/pace.min.js"></script>
+
+    <!-- Bootstrap core CSS and Material Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap-material-design.css" rel="stylesheet">
+    <link href="css/ripples.min.css" rel="stylesheet">
+    <link href="css/material-scrolltop.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/material-blog.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-material-blog navbar-primary navbar-absolute-top">
+      <%= render :partial => 'navbar' %>
+    </div>
+
+    <div class="container blog-content">
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <div class="row">
+            <div class="col-sm-6">
+              <% @posts.each do |post| %>
+                <% if post.data.author.first_name == "Henrique" %>
+                  <%= render :partial => 'post', :locals => {:post => post} %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="col-sm-6">
+              <% @posts.each do |post| %>
+                <% if post.data.author.first_name != "Henrique" %>
+                  <%= render :partial => 'post2', :locals => {:post => post} %>
+
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+          <nav>
+            <ul class="pager">
+              <li><a class="withripple" href="#">Previous</a></li>
+              <li><a class="withripple" href="#">Next</a></li>
+            </ul>
+          </nav>
+
+
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+
+          <%= render :partial => 'sidebar' %>
+
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <button class="material-scrolltop primary" type="button"></button>
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ripples.min.js"></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/material-scrolltop.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+      $.material.init();
+      $('body').materialScrollTop();
+    </script>
+    <% [:success, :error].each do |key| %>
+      <% if flash[key] %>
+        <div class="<%= key %>" id="flash">
+          <%= flash[key] %>
+        </div>
+       <% end %>
+    <% end %>
+
+  </body>
+</html>
