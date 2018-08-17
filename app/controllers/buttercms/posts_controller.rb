@@ -12,4 +12,8 @@ class Buttercms::PostsController < Buttercms::BaseController
     @next_post = @post.meta.next_post
     @previous_post = @post.meta.previous_post
   end
+
+
+
+
 end

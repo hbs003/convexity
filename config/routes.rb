@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: "registrations"}
   root to: 'pages#home'
-
+  get "/test", to: "pages#test", as: "test"
   get "/coming-soon", to: "pages#coming_soon", as: "coming_soon"
   resources :subscribers, only: [:create, :new, :index]
 

@@ -1,0 +1,29 @@
+<section class="blog-post">
+  <div class="panel panel-default">
+    <% if @post.featured_image == nil %>
+      <img src="img/technology/unsplash-2.jpg" class="img-responsive" />
+    <% else %>
+      <%= image_tag @post.featured_image%>
+    <% end %>
+    <div class="panel-body">
+      <div class="blog-post-meta">
+        <span class="label label-light label-warning">
+          <% @post.categories.each do |category| %>
+            <%= link_to category.name, buttercms_category_path(category.slug), :title => category.name %>
+          <% end %></span>
+        <p class="blog-post-date pull-right"><%= Time.parse(@post.published).strftime('%B %d, %Y') %></p>
+      </div>
+      <div class="blog-post-content">
+        <h2 class="blog-post-title"><%= @post.title %></h2>
+
+        <p>
+          <%= @post.body.html_safe %>
+
+          <% if @next_post %>
+            <%= link_to @next_post.title, buttercms_post_path(@next_post.slug), :title => @next_post.title %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</section><!-- /.blog-post -->
