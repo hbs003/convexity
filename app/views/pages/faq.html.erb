@@ -1,10 +1,85 @@
-<h1><%= @content.faq_heading %></h1>
+<!doctype html>
+<html>
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="./styles/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- BEGIN BLOG HEADER -->
+    <div class="section-blog-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <h3>Junte-se à nossa comunidade e faça melhores investimentos!</h3>
+            <%= form_for :subscriber, url: subscribers_path do |f| %>
 
-<ul>
-  <% @content.faq_items.each do |item| %>
-    <li>
-      <h4><%= item.question %></h4>
-      <p><%= item.answer %></p>
-    </li>
-  <% end %>
-</ul>
+               <div class="required email">
+               <%= f.text_field :email, class: 'required email', placeholder: "Insira seu email aqui." %>
+               </div>
+
+               <div class="form-actions">
+               <%= f.submit "Cadastre-se!", {class: "button"}%>
+               </div>
+             <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END BLOG HEADER -->
+
+    <!-- BEGIN BLOG POST -->
+    <div class="section-blog-post">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="post-container">
+
+              <h1>PERGUNTAS FREQUENTES</h1>
+
+
+              <div class="featured-image">
+                <img src="https://d2devwt40at1e2.cloudfront.net/api/file/FNVJdJWTu6N0tIwhx8AA" width="100%">
+              </div>
+
+              <div class="post-body">
+                <p>Aqui você encontra as perguntas e respostas mais comuns para entender melhor o funcionamento da nossa plataforma. Se houver outras dúvidas que possamos esclarecer entre em contato por email.</p>
+
+                <ul>
+
+                    <li>
+                      <h4> item.question %></h4>
+                      <p> item.answer %></p>
+                    </li>
+
+                </ul>
+
+                <p>Morbi venenatis varius urna efficitur tincidunt. Suspendisse dolor mi, congue eget commodo ac, congue quis odio. Sed neque elit, tempor ac tempus convallis, posuere feugiat ex. Duis ut nulla sem. Maecenas ultrices feugiat lacus, sit amet commodo tellus porttitor ac. Proin non mauris id est laoreet sodales. Curabitur ut purus lacus. Duis laoreet velit ac risus gravida aliquet. Sed nisi nibh, tempus vel cursus in, venenatis nec nulla. Nam mi sapien, rutrum quis arcu quis, sollicitudin ultrices dolor. Praesent at sapien enim. Aliquam erat volutpat. Integer quis nisl iaculis lectus feugiat viverra in et mauris. Fusce interdum eu dui et mattis.</p>
+              </div>
+
+              <div class="post-author">
+                <div class="headshot">
+                  <img src="https://dl.dropboxusercontent.com/u/598519/chase.png" width="100%">
+                </div>
+                <p><strong>About the author:</strong> Chase Coleman is co-founder of ButterCMS and a developer. He loves building tools that make life easier for developers. You can find him at @buttercms and chase@buttercms.com  where he will definitely reply to you.</p>
+              </div>
+
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                  /* * * CONFIGURATION VARIABLES * * */
+                  var disqus_shortname = 'buttercms';
+
+                  /* * * DON'T EDIT BELOW THIS LINE * * */
+                  (function() {
+                      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                  })();
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

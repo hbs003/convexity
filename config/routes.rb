@@ -10,10 +10,12 @@ Rails.application.routes.draw do
 
     get '/blog(/page/:page)' => 'posts#index', :defaults => {:page => 1}, :as => :buttercms_blog
     get '/blog/:slug' => 'posts#show', :as => :buttercms_post
+
   end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: "registrations"}
   root to: 'pages#home'
+  get "/faq", to: "pages#faq", as: "faq"
   get "/test", to: "pages#test", as: "test"
   get "/coming-soon", to: "pages#coming_soon", as: "coming_soon"
   resources :subscribers, only: [:create, :new, :index]
