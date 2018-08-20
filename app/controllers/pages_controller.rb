@@ -10,10 +10,11 @@ class PagesController < ApplicationController
   end
 
   def faq
-    @content = ButterCMS::Content.fetch([:faq_heading, :faq_items]).data
+
   end
 
   def test
+
   end
 
 

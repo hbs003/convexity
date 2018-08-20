@@ -1,14 +1,79 @@
-<h1>Offer#show</h1>
-<h1>Empresa: <%= @offer.enterprise.name %></h1>
-<% @offer.enterprise.founders.each do |founder| %>
-<ul>
-  <li><%= founder.name  %></li>
-</ul>
-<% end %>
-<p>Resumo: <%= @offer.enterprise.abstract %></p>
-<p>Valor Unitário: <%= @offer.pu %></p>
-<p>Descrição da oferta pública: <%= @offer.description %></p>
-<p>Percentual<%= @offer.share %>%</p>
-<p>Quantidade: <%= @offer.units %></p>
+<!doctype html>
+<html>
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="./styles/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- BEGIN BLOG HEADER -->
+    <div class="section-blog-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <h1 style="color:white">Empresa: <%= @offer.enterprise.name %></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END BLOG HEADER -->
+
+    <!-- BEGIN BLOG POST -->
+    <div class="section-blog-post">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="post-container">
+
+              <h1>INFORMAÇÕES SOBRE A OFERTA:</h1>
 
 
+              <div class="featured-image">
+                <img src="https://images.unsplash.com/photo-1456394555490-ef1bf0aedc46?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=828f8fc43a22dc389009b817ba49bae0&auto=format&fit=crop&w=1050&q=80" width="100%">
+              </div>
+
+              <div class="post-body">
+                <p>Resumo: <%= @offer.enterprise.abstract %></p>
+
+                <% @offer.enterprise.founders.each do |founder| %>
+                  <ul>
+                    <li><%= founder.name  %></li>
+                  </ul>
+                <% end %>
+
+                <p>Descrição da oferta pública: <%= @offer.description %></p>
+
+                <ul>
+                    <li>Valor Unitário: <%= @offer.pu %></li>
+                    <li>Percentual<%= @offer.share %>%</li>
+                    <li>Quantidade: <%= @offer.units %></li>
+                </ul>
+              </div>
+
+
+                <form action="/subscribers/new">
+                  <div class="banner-content" style="display: flex; justify-content: center;" >
+                    <input type="submit" class="btn btn-primary btn-lg" value="INVESTIR" style="background-color: red; width: 250px;">
+                  </div>
+                </form>
+
+
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                  /* * * CONFIGURATION VARIABLES * * */
+                  var disqus_shortname = 'buttercms';
+
+                  /* * * DON'T EDIT BELOW THIS LINE * * */
+                  (function() {
+                      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                  })();
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
