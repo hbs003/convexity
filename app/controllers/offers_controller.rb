@@ -9,7 +9,7 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = Offer.new(review_params)
+    @offer = Offer.new(offer_params)
     @offer.enterprise = Enterprise.find(params[:enterprise_id])
     if @offer.save
       redirect_to offer_path(@offer)
@@ -37,7 +37,7 @@ class OffersController < ApplicationController
 
   private
 
-  def review_params
+  def offer_params
     params.require(:offer).permit(:description, :share, :pu, :units, :enterprise_id)
   end
 end

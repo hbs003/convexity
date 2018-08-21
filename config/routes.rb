@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   scope :module => 'buttercms' do
     get '/categories/:slug' => 'categories#show', :as => :buttercms_category
     get '/author/:slug' => 'authors#show', :as => :buttercms_author
@@ -27,7 +28,11 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [ :show, :edit, :update, :destroy ]
-  resources :offers, only: [ :show ]
+  resources :offers, only: [ :show ] do
+    resources :investments, only: [ :index, :new, :create ]
+  end
+  resources :investments, only: [ :show, :edit, :update, :destroy ]
   resources :founders, only: [ :show, :edit, :update, :destroy ]
+  get "/mywallet", to: "investments#wallet", as: "wallet"
 
 end

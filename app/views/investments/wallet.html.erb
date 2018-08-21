@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="./styles/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- BEGIN BLOG HEADER -->
+    <div class="section-blog-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <h1 style="color:white">Usuário: <%= current_user.name %></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END BLOG HEADER -->
+
+    <!-- BEGIN BLOG POST -->
+    <div class="section-blog-post">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="post-container">
+
+              <h1>RELAÇÃO DOS MEUS INVESTIMENTOS</h1>
+
+              <div class="post-body">
+                <p> Abaixo temos a listagem dos seus investimentos bem como o seu status:</p>
+                <% @investments.each do |investment| %>
+                  <ul>
+                    <li>Empresa:<%= investment.offer.enterprise.name %> / Quotas:<%= investment.amount %> / Valor unitário: <%= investment.offer.pu %> / Valor total: <%= investment.offer.pu * investment.amount %> / Status: <%= investment.status %> / <%= link_to "Cancelar", investment_path(investment), method: :delete, data: { confirm: "Tem certeza?" } %> / <%= link_to 'Corrigir', edit_investment_path(investment) %></li>
+                  </ul>
+                <% end %>
+                <p>Valor total investido até o momento: R$<%= @total_invested %>,00</p>
+                <% if @total_invested > 10000  %>
+                  <p> Você ultrapassou a marca de investimento de R$10.000,00. De acordo com a ICVM 588  o investidor somente poderá investir acima do limite de R$10.000,00 por ano-calendário, em um dos seguintes casos: (i) investidor líder; (ii) investidor qualificado; (iii) investidor com renda bruta anual superior a R$100.000,00 por ano; ou (iv) investidor com investimento financeiro superior a R$100.000,00.</p>
+                <% end %>
+                <p>Ofertas em aberto para investimento</p>
+                <div class="banner-content" style="display: flex; justify-content: center;" >
+                  <% @offers.each do |offer| %>
+                    <%= link_to(offer_path(offer)) do %>
+                      <ul>
+                        <li>
+                          <p><%= offer.enterprise.name %></p>
+                        </li>
+                      </ul>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
