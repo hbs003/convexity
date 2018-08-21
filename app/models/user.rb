@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :enterprises, through: :stocks
   has_many :reviews, dependent: :destroy
   has_many :stocks
+  has_many :investments
   validates :email, presence: true
   after_create :subscribe_to_newsletter
   private

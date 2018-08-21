@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="./styles/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- BEGIN BLOG HEADER -->
+    <div class="section-blog-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <h1 style="color:white">Empresa: <%= @offer.enterprise.name %></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END BLOG HEADER -->
+
+    <!-- BEGIN BLOG POST -->
+    <div class="section-blog-post">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="post-container">
+
+              <h1>RESUMO DO INVESTIMENTO</h1>
+
+              <div class="post-body">
+                <p> Até o presente momento contabilizamos <%= @investments.count %> investimentos nesta empresa. Conheça aqui a <%= link_to 'lista', offer_investments_path(@offer) %> de investidores que já aderiram a esta captação. Ainda estão disponíveis para investimento nesta rodada <%= @max %> quotas.</p>
+                <%= render 'form' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

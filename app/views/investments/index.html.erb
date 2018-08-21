@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="./styles/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- BEGIN BLOG HEADER -->
+    <div class="section-blog-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <h1 style="color:white">Empresa: <%= @offer.enterprise.name %></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END BLOG HEADER -->
+
+    <!-- BEGIN BLOG POST -->
+    <div class="section-blog-post">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="post-container">
+
+              <h1>RELAÇÃO DE INVESTIMENTOS DESTA OFERTA</h1>
+
+              <div class="post-body">
+                <p> Até o presente momento temos os seguintes investimentos nesta oferta:</p>
+                <% @investments.each do |investment| %>
+                  <ul>
+                    <li><%= investment.amount %> / <%= investment.user.name %> / <%= investment.status %>
+                  </ul>
+                <% end %>
+                <div class="banner-content" style="display: flex; justify-content: center;" >
+                    <%= link_to 'Investir', new_offer_investment_path(@offer), {:style=>"background-color: red; width: 250px;", :class => "btn btn-primary btn-lg"} %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

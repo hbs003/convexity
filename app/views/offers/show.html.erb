@@ -51,14 +51,14 @@
               </div>
 
 
-                <form action="/subscribers/new">
-                  <div class="banner-content" style="display: flex; justify-content: center;" >
-                    <input type="submit" class="btn btn-primary btn-lg" value="INVESTIR" style="background-color: red; width: 250px;">
-                  </div>
-                </form>
+
+                <div class="banner-content" style="display: flex; justify-content: center;" >
+                    <%= link_to 'Investir', new_offer_investment_path(@offer), {:style=>"background-color: red; width: 250px;", :class => "btn btn-primary btn-lg"} %>
+                </div>
 
 
-              <div id="disqus_thread"></div>
+
+              <div id="disqus_thread" style="margin-top: 50px;"></div>
               <script type="text/javascript">
                   /* * * CONFIGURATION VARIABLES * * */
                   var disqus_shortname = 'buttercms';
