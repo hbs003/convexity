@@ -12,6 +12,11 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :cpf, uniqueness: true
   after_create :subscribe_to_newsletter
+  mount_uploader :photo, PhotoUploader
+
+
+
+
   private
 
   def subscribe_to_newsletter
