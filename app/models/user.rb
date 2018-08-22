@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :stocks
   has_many :investments
   validates :email, presence: true
+  validates :email, uniqueness: true
+  validates :cpf, uniqueness: true
   after_create :subscribe_to_newsletter
   private
 

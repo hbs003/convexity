@@ -17,34 +17,71 @@
       </div>
     </div>
     <!-- END BLOG HEADER -->
-
+    <% if @total_invested <= 10000 %>
     <!-- BEGIN BLOG POST -->
-    <div class="section-blog-post">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="post-container">
+      <div class="section-blog-post">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="post-container">
 
-              <h1>RESUMO DO INVESTIMENTO</h1>
+                <h1>RESUMO DO INVESTIMENTO</h1>
 
-              <div class="post-body">
-                <p> Recebemos a sua proposta e no presente momento o status do seu investimento é <%= @investment.status %>. Efetue o depósito na conta abaixo em até 48 horas para garantir a sua participação nesta captação. O valor total do seu investimento foi de R$<%= @investment.amount * @investment.offer.pu %>,00. Caso haja algum equívoco corrija <%= link_to 'aqui', edit_investment_path(@investment) %> a sua aplicação. Caso não tenha mais interesse, você pode <%= link_to "cancelar", investment_path(@investment), method: :delete, data: { confirm: "Tem certeza?" } %> sua aplicação a qualquer momento. Após a confirmação do depósito você terá até sete dias para desistir do investimento. Para maiores informações acesse a sessão <%= link_to 'FAQ', faq_path %> </p>
-                <ul>DADOS PARA DEPÓSITO
-                  <li>BANCO INTER</li>
-                  <li>AG:7777</li>
-                  <li>CONTA CORRENTE: 777777-7</li>
-                  <li>FAVORECIDO: CONVEXITY CAPITAL SA.</li>
-                  <li>CNPJ: 01478009900-11</li>
-                </ul>
-                <p> Em até 24 horas após a confirmação do seu depósito iremos efetuar a mudança do status do seu investimento para "APROVADO" e vc receberá um email confirmando a mudança. </p>
-                <div class="banner-content" style="display: flex; justify-content: center;" >
-                    <%= link_to 'Meus Investimentos', wallet_path, {:style=>"background-color: red; width: 250px;", :class => "btn btn-primary btn-lg"} %>
+                <div class="post-body">
+                  <p> Recebemos a sua proposta e no presente momento o status do seu investimento é <%= @investment.status %>. Efetue o depósito na conta abaixo em até 48 horas para garantir a sua participação nesta captação. O valor total do seu investimento foi de R$<%= @investment.amount * @investment.offer.pu %>,00. Caso haja algum equívoco corrija <%= link_to 'aqui', edit_investment_path(@investment) %> a sua aplicação. Caso não tenha mais interesse, você pode <%= link_to "cancelar", investment_path(@investment), method: :delete, data: { confirm: "Tem certeza?" } %> sua aplicação a qualquer momento. Após a confirmação do depósito você terá até sete dias para desistir do investimento. Para maiores informações acesse a sessão <%= link_to 'FAQ', faq_path %> </p>
+                  <ul>DADOS PARA DEPÓSITO
+                    <li>BANCO INTER</li>
+                    <li>AG:7777</li>
+                    <li>CONTA CORRENTE: 777777-7</li>
+                    <li>FAVORECIDO: CONVEXITY CAPITAL SA.</li>
+                    <li>CNPJ: 01478009900-11</li>
+                  </ul>
+                  <p> Em até 24 horas após a confirmação do seu depósito iremos efetuar a mudança do status do seu investimento para "APROVADO" e vc receberá um email confirmando a mudança. </p>
+                  <div class="banner-content" style="display: flex; justify-content: center;" >
+                      <%= link_to 'Meus Investimentos', wallet_path, {:style=>"background-color: red; width: 250px;", :class => "btn btn-primary btn-lg"} %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <% else %>
+      <div class="section-blog-post">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="post-container">
+
+                <h1>TERMO DE INVESTIMENTO</h1>
+
+                <div class="post-body">
+                  <p> Recebemos a sua proposta e no presente momento o status do seu investimento é <%= @investment.status %>. Como o total dos seus investimentos ultrapassa o valor de R$10.000,00 para prosseguirmos com a sua solicitação você precisa atender a um dos requisitos abaixo: </p>
+                  <ol>
+                    <li>Ser investidor líder;</li>
+                    <li>Ser investidor qualificado;</li>
+                    <li>Ser investidor com renda bruta anual superior a R$100.000,00 por ano;</li>
+                    <li>Ser investidor com investimento financeiro superior a R$100.000,00.</li>
+                  </ol>
+                  <p> Caso você atenda a um destes requisitos, fineza preencher a declaração adequada conforme modelos disponibilizados nos links  abaixo e anexar ao nosso sistema para que seja liberado o seu acesso para a oferta. </p>
+                  <b>Caso contrário você precisa reduzir este investimento para até R$<%= 10000-@total_invested %>,00 para ser liberado conforme regulamentação da ICVM 588. </b>
+                  <div class="banner-content" style="display: flex; justify-content: space-around; margin: 20px;">
+                  <%= link_to 'DECLARAÇÃO INVESTIDOR QUALIFICADO', "/investidor_qualificado.pdf", :target => "_blank" %>
+                  <%= link_to 'DECLARAÇÃO INVESTIDOR', "/investidor.pdf", :target => "_blank" %>
+                  </div>
+                  <div class="banner-content" style="display: flex; justify-content: center;margin-bottom: 20px;">
+                      <%= link_to 'Anexar Declaração', wallet_path, {:style=>"background-color: green; width: 250px;", :class => "btn btn-primary btn-lg"} %>
+                  </div>
+
+                  <div class="banner-content" style="display: flex; justify-content: center;" >
+                      <%= link_to 'Meus Investimentos', wallet_path, {:style=>"background-color: red; width: 250px;", :class => "btn btn-primary btn-lg"} %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </body>
 </html>
