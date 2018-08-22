@@ -48,12 +48,17 @@
                     <li>Percentual<%= @offer.share %>%</li>
                     <li>Quantidade: <%= @offer.units %></li>
                 </ul>
+                <p>Observação: Antes de completar seu investimento mantenha atualizados todos os seus dados cadastrais(nome completo, CPF, endereço, e endereço eletrônico). Caso o seu cadastro não esteja completo você será automaticamente direcionado para a página do cadastro ao solicitar um investimento.</p>
               </div>
 
 
 
                 <div class="banner-content" style="display: flex; justify-content: center;" >
+                  <% if current_user.name != nil && current_user.address != nil && current_user.cpf != nil%>
                     <%= link_to 'Investir', new_offer_investment_path(@offer), {:style=>"background-color: red; width: 250px;", :class => "btn btn-primary btn-lg"} %>
+                  <% else %>
+                    <%= link_to 'Investir', "/users/edit", {:style=>"background-color: red; width: 250px;", :class => "btn btn-primary btn-lg"} %>
+                  <% end %>
                 </div>
 
 

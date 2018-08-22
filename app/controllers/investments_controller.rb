@@ -1,4 +1,5 @@
 class InvestmentsController < ApplicationController
+  before_action :total, only: [:wallet, :show]
   def index
     @offer = Offer.find(params[:offer_id])
     @investments = Investment.all.where(offer_id: @offer.id)
@@ -48,14 +49,6 @@ class InvestmentsController < ApplicationController
   end
 
   def wallet
-    @investments = Investment.all.where(user_id: current_user.id)
-    @offers = Offer.all
-    @total_invested = 0
-    @investments.each do |investment|
-      if investment.status != "rejeitado"
-        @total_invested = @total_invested + (investment.amount * investment.offer.pu)
-      end
-    end
   end
 
 
@@ -68,5 +61,17 @@ class InvestmentsController < ApplicationController
     total_invested = Investment.where(status: "pendente").where(offer_id: offer.id).sum(:amount)
     max = offer.units - total_invested
   end
+
+  def total
+    @investments = Investment.all.where(user_id: current_user.id)
+    @offers = Offer.all
+    @total_invested = 0
+    @investments.each do |investment|
+      if investment.status != "rejeitado"
+        @total_invested = @total_invested + (investment.amount * investment.offer.pu)
+      end
+    end
+  end
+
 
 end
