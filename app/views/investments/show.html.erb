@@ -17,7 +17,9 @@
       </div>
     </div>
     <!-- END BLOG HEADER -->
-    <% if @total_invested <= 10000 %>
+    <% if @total_invested <= 10000 || @investment.photo.file  %>
+
+
     <!-- BEGIN BLOG POST -->
       <div class="section-blog-post">
         <div class="container">
@@ -63,17 +65,16 @@
                     <li>Ser investidor com renda bruta anual superior a R$100.000,00 por ano;</li>
                     <li>Ser investidor com investimento financeiro superior a R$100.000,00.</li>
                   </ol>
-                  <p> Caso você atenda a um destes requisitos, fineza preencher a declaração adequada conforme modelos disponibilizados nos links  abaixo e anexar ao nosso sistema para que seja liberado o seu acesso para a oferta. </p>
-                  <b>Caso contrário você precisa reduzir este investimento para até R$<%= 10000-@total_invested %>,00 para ser liberado conforme regulamentação da ICVM 588. </b>
+                  <p> Caso você atenda a um destes requisitos, fineza preencher a declaração adequada conforme modelos disponibilizados nos links  abaixo e anexar ao nosso sistema para que seja liberado o seu acesso para a oferta. Clicando no botão abaixo você terá acesso a todos os investimentos executados até o momento.</p>
                   <div class="banner-content" style="display: flex; justify-content: space-around; margin: 20px;">
                   <%= link_to 'DECLARAÇÃO INVESTIDOR QUALIFICADO', "/investidor_qualificado.pdf", :target => "_blank" %>
                   <%= link_to 'DECLARAÇÃO INVESTIDOR', "/investidor.pdf", :target => "_blank" %>
                   </div>
                   <div class="banner-content" style="display: flex; justify-content: center;margin-bottom: 20px;">
-                      <%= link_to 'Anexar Declaração', wallet_path, {:style=>"background-color: green; width: 250px;", :class => "btn btn-primary btn-lg"} %>
+                    <%= render 'formpdf' %>
                   </div>
-
-                  <div class="banner-content" style="display: flex; justify-content: center;" >
+                  <b>Caso você não atenda aos requisitos acima será necessário reduzir este investimento em pelo menos R$<%= 10000-@total_invested %>,00 a fim de garantir o  que fora regulamentado pela ICVM 588. Clicando no botão abaixo você terá acesso a todos os investimentos executados até o momento. </b>
+                  <div class="banner-content" style="display: flex; justify-content: center; margin: 20px;" >
                       <%= link_to 'Meus Investimentos', wallet_path, {:style=>"background-color: red; width: 250px;", :class => "btn btn-primary btn-lg"} %>
                   </div>
                 </div>

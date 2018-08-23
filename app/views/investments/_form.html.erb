@@ -1,7 +1,7 @@
 <%= simple_form_for [@offer, @investment] do |f| %>
   <%= f.input :amount, :label => 'Número de quotas:', :required =>false, input_html: { min: '0', max: @max }  %>
   <p>Preço unitário da quota do investimento: R$<%= @offer.pu %>,00</p>
-  <div style="margin: auto; justify-content: space-around;align-items:  center;display:  flex;">
-    <%= f.submit "Investir", class: "btn btn-primary" %>
+  <div class="banner-content" style="display: flex; justify-content: center;margin-bottom: 20px;">
+    <%= f.submit "Investir" , class: "btn btn-primary btn-lg", style: "width: 250px; font-size:18px;" %>
   </div>
 <% end %>

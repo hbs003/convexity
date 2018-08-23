@@ -1,0 +1,16 @@
+<%= simple_form_for(@investment) do |f| %>
+  <div class="banner-content" style="display: flex; justify-content: center;margin-bottom: 20px;">
+    <label class="btn btn-primary btn-lg" style="background-color: green; width: 250px;font-size:18px;">
+      Anexar Declaração
+      <span style="display:none;">
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+      </span>
+    </label>
+  </div>
+  <div class="banner-content" style="display: flex; justify-content: center;margin-bottom: 20px;">
+
+      <%= f.submit "Confirmar" , class: "btn btn-primary btn-lg", style: "width: 250px; font-size:18px;" %>
+
+  </div>
+<% end %>
