@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="./styles/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- BEGIN BLOG HEADER -->
+    <div class="section-blog-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <h1 style="color:white">Empresa: <%= @investment.offer.enterprise.name %></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END BLOG HEADER -->
+
+    <div class="section-blog-post">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="post-container">
+
+              <h1>TERMO DE INVESTIMENTO</h1>
+
+              <div class="post-body">
+                <p> Recebemos a sua proposta e no presente momento o status do seu investimento é <%= @investment.status %>. Como o total dos seus investimentos na nossa plataforma ultrapassa o valor de R$10.000,00 para prosseguirmos com a sua solicitação você precisa atender a um dos requisitos abaixo: </p>
+                <ol>
+                  <li>Ser investidor líder;</li>
+                  <li>Ser investidor qualificado;</li>
+                  <li>Ser investidor com renda bruta anual superior a R$100.000,00 por ano;</li>
+                  <li>Ser investidor com investimento financeiro superior a R$100.000,00.</li>
+                </ol>
+                <p> Caso você atenda a um destes requisitos, fineza preencher a declaração adequada conforme modelos disponibilizados nos links  abaixo e anexar através do botão abaixo para que seja liberado o seu acesso para a oferta.</p>
+                <b>INVESTIDORES QUALIFICADOS: </b>
+                <p> É uma classificação da Comissão de Valores Mobiliários (CVM) para pessoa física ou jurídica que possui aplicações financeiras em valor igual ou superior a R$ 1 milhão e que ateste essa condição por escrito, ou que possua alguma certificação que a CVM aceite para fins de consideração de investidor qualificado.</p>
+                <div class="banner-content" style="display: flex; justify-content: space-around; margin: 20px;">
+                  <%= link_to 'MODELO DECLARAÇÃO INVESTIDOR QUALIFICADO', "/investidor_qualificado.pdf", :target => "_blank" %>
+                </div>
+                <div class="banner-content" style="display: flex; justify-content: center;margin-bottom: 20px;">
+                  <%= render 'formpdf' %>
+                </div>
+                <b>INVESTIDORES COM RENDA OU INVESTIMENTO MAIOR QUE R$100.000,00: </b>
+                <div class="banner-content" style="display: flex; justify-content: space-around; margin: 20px;">
+                  <%= link_to 'MODELO DECLARAÇÃO INVESTIDOR', "/investidor.pdf", :target => "_blank" %>
+                </div>
+                <div class="banner-content" style="display: flex; justify-content: center;margin-bottom: 20px;">
+                  <%= render 'formpdf' %>
+                </div>
+                <b>Caso você não atenda aos requisitos acima será necessário <%= link_to 'reduzir este investimento', edit_investment_path(@investment) %> em pelo menos R$<%= 10000-@total_invested %>,00 a fim de garantir o  que fora regulamentado pela ICVM 588. Clicando no botão abaixo você terá acesso a todos os investimentos executados até o momento. </b>
+                <div class="banner-content" style="display: flex; justify-content: center; margin: 20px;" >
+                    <%= link_to 'Meus Investimentos', wallet_path, {:style=>"background-color: red; width: 250px;", :class => "btn btn-primary btn-lg"} %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

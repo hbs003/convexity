@@ -1,5 +1,5 @@
 class InvestmentsController < ApplicationController
-  before_action :total, only: [:wallet, :show]
+  before_action :total, only: [:wallet, :show, :rejected]
   def index
     @offer = Offer.find(params[:offer_id])
     @investments = Investment.all.where(offer_id: @offer.id)
@@ -18,8 +18,23 @@ class InvestmentsController < ApplicationController
     @investment.user = current_user
     @investment.status = "pendente"
     if @investment.save
+      @investments = Investment.all.where(user_id: current_user.id)
+      @offers = Offer.all
+      @total_invested = 0
+      @investments.each do |investment|
+        if investment.status != "rejeitado"
+          @total_invested = @total_invested + (investment.amount * investment.offer.pu)
+        end
+      end
+      if @total_invested > 10000
+
+        @investment.status = "rejeitado"
+        @investment.update(investment_params)
+        redirect_to rejected_path(@investment) and return
+      end
       redirect_to investment_path(@investment)
     else
+      flash[:notice] = "Não foi possível finalizar sua solicitação."
       render :new
     end
   end
@@ -32,8 +47,14 @@ class InvestmentsController < ApplicationController
   def update
     @investment = Investment.find(params[:id])
     if @investment.update(investment_params)
+      if @investment.photo != nil
+        @investment.status = "pendente"
+      end
+      @investment.update(investment_params)
+      flash[:notice] = "Dados alterados."
       redirect_to investment_path(@investment)
     else
+      flash[:notice] = "Não foi possível finalizar sua solicitação."
       render :edit
     end
   end
@@ -51,10 +72,14 @@ class InvestmentsController < ApplicationController
   def wallet
   end
 
+  def rejected
+    @investment = Investment.find(params[:id])
+  end
+
 
   private
   def investment_params
-    params.require(:investment).permit(:amount, :available, :status)
+    params.require(:investment).permit(:amount, :available, :status, :photo)
   end
 
   def set_max(offer)
@@ -72,6 +97,11 @@ class InvestmentsController < ApplicationController
       end
     end
   end
+
+  def check
+
+  end
+
 
 
 end
