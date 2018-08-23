@@ -27,11 +27,14 @@ class InvestmentsController < ApplicationController
         end
       end
       if @total_invested > 10000
+
         @investment.status = "rejeitado"
         @investment.update(investment_params)
+        redirect_to rejected_path(@investment) and return
       end
       redirect_to investment_path(@investment)
     else
+      flash[:notice] = "Não foi possível finalizar sua solicitação."
       render :new
     end
   end
@@ -44,9 +47,14 @@ class InvestmentsController < ApplicationController
   def update
     @investment = Investment.find(params[:id])
     if @investment.update(investment_params)
+      if @investment.photo != nil
+        @investment.status = "pendente"
+      end
+      @investment.update(investment_params)
       flash[:notice] = "Dados alterados."
       redirect_to investment_path(@investment)
     else
+      flash[:notice] = "Não foi possível finalizar sua solicitação."
       render :edit
     end
   end
@@ -89,6 +97,11 @@ class InvestmentsController < ApplicationController
       end
     end
   end
+
+  def check
+
+  end
+
 
 
 end

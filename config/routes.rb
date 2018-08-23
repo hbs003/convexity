@@ -34,5 +34,6 @@ Rails.application.routes.draw do
   resources :investments, only: [ :show, :edit, :update, :destroy]
   resources :founders, only: [ :show, :edit, :update, :destroy ]
   get "/mywallet", to: "investments#wallet", as: "wallet"
+  get "investments/:id/rejected", to: "investments#rejected", as: "rejected"
 
 end
