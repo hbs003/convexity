@@ -18,19 +18,20 @@ class InvestmentsController < ApplicationController
     @investment.user = current_user
     @investment.status = "pendente"
     if @investment.save
-      @investments = Investment.all.where(user_id: current_user.id)
-      @offers = Offer.all
-      @total_invested = 0
-      @investments.each do |investment|
-        if investment.status != "rejeitado"
-          @total_invested = @total_invested + (investment.amount * investment.offer.pu)
+      if not @investment.user.qualified
+        @investments = Investment.all.where(user_id: current_user.id)
+        @offers = Offer.all
+        @total_invested = 0
+        @investments.each do |investment|
+          if investment.status != "rejeitado"
+            @total_invested = @total_invested + (investment.amount * investment.offer.pu)
+          end
         end
-      end
-      if @total_invested > 10000
-
-        @investment.status = "rejeitado"
-        @investment.update(investment_params)
-        redirect_to rejected_path(@investment) and return
+        if @total_invested > 10000
+          @investment.status = "rejeitado"
+          @investment.update(investment_params)
+          redirect_to rejected_path(@investment) and return
+        end
       end
       redirect_to investment_path(@investment)
     else
