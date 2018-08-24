@@ -31,7 +31,7 @@
                 <p> Abaixo temos a listagem dos seus investimentos bem como o seu status:</p>
                 <% @investments.each do |investment| %>
                   <ul>
-                    <li>Empresa:<%= investment.offer.enterprise.name %> / Quotas:<%= investment.amount %> / Valor unitário: <%= investment.offer.pu %> / Valor total: <%= investment.offer.pu * investment.amount %> / Status: <%= investment.status %> / <%= link_to "Cancelar", investment_path(investment), method: :delete, data: { confirm: "Tem certeza?" } %> / <%= link_to 'Corrigir', edit_investment_path(investment) %></li>
+                    <li>Empresa:<%= investment.offer.enterprise.name %> / Quotas:<%= investment.amount %> / Valor unitário: <%= investment.offer.pu %> / Valor total: <%= investment.offer.pu * investment.amount %> / Status: <%= investment.status %> / Risco: <%= investment.risk %> / <%= link_to "Cancelar", investment_path(investment), method: :delete, data: { confirm: "Tem certeza?" } %> / <%= link_to 'Corrigir', edit_investment_path(investment) %></li>
                   </ul>
                 <% end %>
                 <p>Valor total investido até o momento: R$<%= @total_invested %>,00</p>
