@@ -34,6 +34,7 @@ class InvestmentsController < ApplicationController
           if @total_invested > 10000
             @investment.status = "rejeitado"
             @investment.update(investment_params)
+            raise
             redirect_to rejected_path(@investment) and return
           end
         end

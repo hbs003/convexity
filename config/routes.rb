@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get "/faq", to: "pages#faq", as: "faq"
   get "/risk", to: "pages#risk", as: "risk"
-  get "/test", to: "pages#test", as: "test"
   get "/coming-soon", to: "pages#coming_soon", as: "coming_soon"
   resources :subscribers, only: [:create, :new, :index]
 
