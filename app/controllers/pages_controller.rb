@@ -17,5 +17,9 @@ class PagesController < ApplicationController
 
   end
 
+  def risk
+
+  end
+
 
 end

@@ -1,6 +1,7 @@
 <%= simple_form_for [@offer, @investment] do |f| %>
-  <%= f.input :amount, :label => 'Número de quotas:', :required =>false, input_html: { min: '0', max: @max }  %>
+  <%= f.input :amount, :label => 'Número de quotas:', :required =>false, input_html: { min: '1', max: @max }  %>
   <p>Preço unitário da quota do investimento: R$<%= @offer.pu %>,00</p>
+  <p><%= f.input_field :risk, as: :boolean, boolean_style: :inline %> Li e estou de acordo com o <%= link_to 'termo de ciência de risco', risk_path %> nos termos do art. 19, IV da ICVM 588.</p>
   <div class="banner-content" style="display: flex; justify-content: center;margin-bottom: 20px;">
     <%= f.submit "Investir" , class: "btn btn-primary btn-lg", style: "width: 250px; font-size:18px;" %>
   </div>

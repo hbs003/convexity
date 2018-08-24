@@ -17,26 +17,31 @@ class InvestmentsController < ApplicationController
     @investment.offer = Offer.find(params[:offer_id])
     @investment.user = current_user
     @investment.status = "pendente"
-    if @investment.save
-      if not @investment.user.qualified
-        @investments = Investment.all.where(user_id: current_user.id)
-        @offers = Offer.all
-        @total_invested = 0
-        @investments.each do |investment|
-          if investment.status != "rejeitado"
-            @total_invested = @total_invested + (investment.amount * investment.offer.pu)
+    if @investment.risk == false
+      flash[:notice] = "Para continuar você deve indicar ciência do termo de risco, marcando a caixa de verificação."
+      redirect_to new_offer_investment_path(@investment.offer)
+    else
+      if @investment.save
+        if not @investment.user.qualified
+          @investments = Investment.all.where(user_id: current_user.id)
+          @offers = Offer.all
+          @total_invested = 0
+          @investments.each do |investment|
+            if investment.status != "rejeitado"
+              @total_invested = @total_invested + (investment.amount * investment.offer.pu)
+            end
+          end
+          if @total_invested > 10000
+            @investment.status = "rejeitado"
+            @investment.update(investment_params)
+            redirect_to rejected_path(@investment) and return
           end
         end
-        if @total_invested > 10000
-          @investment.status = "rejeitado"
-          @investment.update(investment_params)
-          redirect_to rejected_path(@investment) and return
-        end
+        redirect_to investment_path(@investment)
+      else
+        flash[:notice] = "Não foi possível finalizar sua solicitação."
+        render :new
       end
-      redirect_to investment_path(@investment)
-    else
-      flash[:notice] = "Não foi possível finalizar sua solicitação."
-      render :new
     end
   end
 
@@ -80,7 +85,7 @@ class InvestmentsController < ApplicationController
 
   private
   def investment_params
-    params.require(:investment).permit(:amount, :available, :status, :photo)
+    params.require(:investment).permit(:amount, :available, :status, :photo,:risk)
   end
 
   def set_max(offer)
