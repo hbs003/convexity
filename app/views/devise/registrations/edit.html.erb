@@ -1,5 +1,5 @@
-<div class="devise-container image-devise">
-  <div class="devise-content-container">
+<div class="devise-container image-devise" >
+  <div class="devise-content-container" style="margin: 75px 15%;">
     <h2>Atualizar o seu cadastro </h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -10,6 +10,31 @@
         <%= f.input :name, label: 'Nome', required: false, hint: "Insira seu nome completo no campo acima.", autofocus: true %>
         <%= f.input :cpf, required: false,  hint: "Insira seu cpf no campo acima.", autofocus: true %>
         <%= f.input :address, label: 'Endereço', required: false,  hint: "Insira seu endereço residencial no campo acima.", autofocus: true %>
+        <div class="form-inputs">
+          <% if current_user.qualified == true %>
+            <p style="margin-bottom: 10px">Investidor Qualificado <i class="fa fa-check-square"></i></p>
+          <% else %>
+            <b>INVESTIDORES QUALIFICADOS: </b>
+            <div class="banner-content" style="display: flex; justify-content: space-around; margin: 20px;">
+              <p> É uma classificação da Comissão de Valores Mobiliários (CVM) para pessoa física ou jurídica que possui aplicações financeiras em valor igual ou superior a R$ 1 milhão e que ateste essa condição por escrito, ou que possua alguma certificação que a CVM aceite para fins de consideração de investidor qualificado.</p>
+            </div>
+            <div class="banner-content" style="display: flex; justify-content: space-around; margin: 20px;">
+              <%= link_to 'MODELO DECLARAÇÃO INVESTIDOR QUALIFICADO', "/investidor_qualificado.pdf", :target => "_blank" %>
+            </div>
+            <div class="banner-content" style="display: flex; justify-content: center;margin-bottom: 20px;">
+              <label class="btn btn-primary btn-lg" style="background-color: green; width: 250px;font-size:18px;">
+                Anexar Declaração
+                <span style="display:none;">
+                  <%= f.input :photo %>
+                  <%= f.input :photo_cache, as: :hidden %>
+                </span>
+              </label>
+            </div>
+          <% end %>
+          <% if current_user.photo %>
+            <% current_user.update(qualified: true) %>
+          <% end %>
+        </div>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -25,8 +50,11 @@
       </div>
     <% end %>
 
-    <h3>Cancelar sua conta?</h3>
+    <div style="margin: auto; justify-content: flex-start;align-items:  center;display:  flex;margin-bottom: 10px;">
     <p>Não está satisfeito? <%= link_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete %></p>
-    <%= link_to "Voltar", :back %>
+    </div>
+    <div style="margin: auto; justify-content: flex-start;align-items:  center;display:  flex;margin-bottom: 20px;">
+      <%= link_to "Voltar", :back %>
+    </div>
   </div>
 </div>
