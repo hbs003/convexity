@@ -1,5 +1,6 @@
 class InvestmentsController < ApplicationController
-  before_action :total, only: [:wallet, :show, :rejected]
+  before_action :total, only: [:wallet, :show, :rejected, :update]
+
   def index
     @offer = Offer.find(params[:offer_id])
     @investments = Investment.all.where(offer_id: @offer.id)
@@ -34,7 +35,6 @@ class InvestmentsController < ApplicationController
           if @total_invested > 10000
             @investment.status = "rejeitado"
             @investment.update(investment_params)
-            raise
             redirect_to rejected_path(@investment) and return
           end
         end
@@ -54,10 +54,6 @@ class InvestmentsController < ApplicationController
   def update
     @investment = Investment.find(params[:id])
     if @investment.update(investment_params)
-      if @investment.photo != nil
-        @investment.status = "pendente"
-      end
-      @investment.update(investment_params)
       flash[:notice] = "Dados alterados."
       redirect_to investment_path(@investment)
     else
@@ -86,7 +82,7 @@ class InvestmentsController < ApplicationController
 
   private
   def investment_params
-    params.require(:investment).permit(:amount, :available, :status, :photo,:risk)
+    params.require(:investment).permit(:amount, :available, :status,:risk, :photo)
   end
 
   def set_max(offer)
@@ -104,11 +100,5 @@ class InvestmentsController < ApplicationController
       end
     end
   end
-
-  def check
-
-  end
-
-
 
 end
