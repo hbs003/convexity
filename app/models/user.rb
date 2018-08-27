@@ -13,11 +13,14 @@ class User < ApplicationRecord
   validates :cpf, uniqueness: true
   after_create :subscribe_to_newsletter
   mount_uploader :photo, PhotoUploader
+
   private
 
   def subscribe_to_newsletter
     SubscribeToNewsletterService.new(self).call
   end
+
+
 
 
 

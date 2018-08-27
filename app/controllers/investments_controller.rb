@@ -70,6 +70,9 @@ class InvestmentsController < ApplicationController
 
   def show
     @investment = Investment.find(params[:id])
+    if @investment.status == "rejeitado"
+      @total_invested = @total_invested + (@investment.amount * @investment.offer.pu)
+    end
   end
 
   def wallet

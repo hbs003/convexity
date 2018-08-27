@@ -11,6 +11,7 @@
         <%= f.input :cpf, required: false,  hint: "Insira seu cpf no campo acima.", autofocus: true %>
         <%= f.input :address, label: 'Endereço', required: false,  hint: "Insira seu endereço residencial no campo acima.", autofocus: true %>
 
+
         <div class="form-inputs">
           <% if current_user.qualified == true %>
             <p style="margin-bottom: 10px">Investidor Qualificado <i class="fa fa-check-square"></i></p>
