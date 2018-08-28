@@ -38,6 +38,7 @@ class InvestmentsController < ApplicationController
             redirect_to rejected_path(@investment) and return
           end
         end
+        InvestmentMailer.confirmation(@investment).deliver_now
         redirect_to investment_path(@investment)
       else
         flash[:notice] = "Não foi possível finalizar sua solicitação."
@@ -55,6 +56,7 @@ class InvestmentsController < ApplicationController
     @investment = Investment.find(params[:id])
     if @investment.update(investment_params)
       flash[:notice] = "Dados alterados."
+      InvestmentMailer.confirmation(@investment).deliver_now
       redirect_to investment_path(@investment)
     else
       flash[:notice] = "Não foi possível finalizar sua solicitação."
@@ -105,3 +107,4 @@ class InvestmentsController < ApplicationController
   end
 
 end
+

@@ -1,0 +1,30 @@
+<h1>Resumo do seu Investmento</h1>
+<h3>Caro <%= @investment.user.name %>,</h3>
+<p>
+  Estamos muito felizes de ter recebido o seu pedido de investimento. No momento o status do seu investimento é <%= @investment.status %>.
+</p>
+<% if @investment.status == "pendente" %>
+  <p>Efetue o depósito na conta abaixo em até 48 horas para garantir a sua participação nesta captação. O valor total do seu investimento foi de R$<%= @investment.amount * @investment.offer.pu %>,00. Caso haja algum equívoco corrija <%= link_to 'aqui', edit_investment_path(@investment) %> a sua aplicação. Caso não tenha mais interesse, você pode <%= link_to "cancelar", investment_path(@investment), method: :delete, data: { confirm: "Tem certeza?" } %> sua aplicação a qualquer momento. Após a confirmação do depósito você terá até sete dias para desistir do investimento. Para maiores informações acesse a sessão <%= link_to 'FAQ', faq_path %> </p>
+    <ul>DADOS PARA DEPÓSITO
+      <li>BANCO INTER</li>
+      <li>AG:7777</li>
+      <li>CONTA CORRENTE: 777777-7</li>
+      <li>FAVORECIDO: CONVEXITY CAPITAL SA.</li>
+      <li>CNPJ: 01478009900-11</li>
+    </ul>
+  <p> Em até 24 horas após a confirmação do seu depósito iremos efetuar a mudança do status do seu investimento para "APROVADO" e vc receberá um email confirmando a mudança. </p>
+  </p>
+<% elsif @investment.status == "rejeitado" %>
+  <p>Como o total dos seus investimentos na nossa plataforma ultrapassa o valor de R$10.000,00 para prosseguirmos com a sua solicitação você precisa atender a um dos requisitos abaixo: </p>
+  <ol>
+    <li>Ser investidor líder;</li>
+    <li>Ser investidor qualificado;</li>
+    <li>Ser investidor com renda bruta anual superior a R$100.000,00 por ano;</li>
+    <li>Ser investidor com investimento financeiro superior a R$100.000,00.</li>
+  </ol>
+  <p> Caso você atenda a um destes requisitos, fineza preencher a declaração adequada conforme modelos disponibilizados nos links  abaixo e anexar através do botão abaixo para que seja liberado o seu acesso para a oferta.</p>
+  <b>INVESTIDORES QUALIFICADOS: </b>
+  <p> É uma classificação da Comissão de Valores Mobiliários (CVM) para pessoa física ou jurídica que possui aplicações financeiras em valor igual ou superior a R$ 1 milhão e que ateste essa condição por escrito, ou que possua alguma certificação que a CVM aceite para fins de consideração de investidor qualificado.</p>
+  <b>Caso você não atenda aos requisitos acima será necessário <%= link_to 'reduzir este investimento', edit_investment_url(@investment) %> a fim de garantir o  que fora regulamentado pela ICVM 588. </b>
+<% end %>
+
