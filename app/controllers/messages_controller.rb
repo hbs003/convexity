@@ -1,10 +1,11 @@
 class MessagesController < ApplicationController
+  skip_before_action :authenticate_user!
   def new
     @message = Message.new
   end
   def create
     @message = Message.new(message_params)
-    if @message.valid?
+    if @message.save
       MessageMailer.contact(@message).deliver_now
       redirect_to message_path
       flash[:notice] = "Recebemos sua mensagem e entraremos em contato!"
