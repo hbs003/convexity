@@ -1,0 +1,26 @@
+<div class="form-horizontal">
+  <fieldset>
+    <%= simple_form_for @message do |f| %>
+    <div class="form-group is-empty">
+      <%= f.input :name, label: 'Nome:',label_html: { class: 'col-md-2 control-label'}, input_html: { class: 'form-control' }, wrapper_html: { class: 'col-md-10 form-inline' }, required: false %>
+    </div>
+    <div class="form-group is-empty">
+      <%= f.input :phone, label: 'Telefone:',label_html: { class: 'col-md-2 control-label'}, input_html: { class: 'form-control' }, wrapper_html: { class: 'col-md-10 form-inline' }, required: false %>
+    </div>
+    <div class="form-group is-empty">
+      <%= f.input :email, label: 'Email:',label_html: { class: 'col-md-2 control-label'}, input_html: { class: 'form-control' }, wrapper_html: { class: 'col-md-10 form-inline' }, required: false %>
+    </div>
+    <div class="form-group is-empty">
+      <%= f.input :body, label: 'Mensagem:',label_html: { class: 'col-md-2 control-label'}, input_html: { class: 'form-control' }, wrapper_html: { class: 'col-md-10 form-inline'}, required: false %>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-10 col-md-offset-2">
+        <%= f.submit "Enviar" , class: "btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </fieldset>
+</div>
+
+

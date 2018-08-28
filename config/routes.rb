@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  get 'messages/new'
   scope :module => 'buttercms' do
     get '/categories/:slug' => 'categories#show', :as => :buttercms_category
     get '/author/:slug' => 'authors#show', :as => :buttercms_author
@@ -36,5 +37,7 @@ Rails.application.routes.draw do
   resources :founders, only: [ :show, :edit, :update, :destroy ]
   get "/mywallet", to: "investments#wallet", as: "wallet"
   get "investments/:id/rejected", to: "investments#rejected", as: "rejected"
+  get "/message", to: "messages#new", as: "message"
+  post "messages", to: "messages#create"
 
 end
