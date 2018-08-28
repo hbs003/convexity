@@ -11,7 +11,7 @@
       <%= f.input :email, label: 'Email:',label_html: { class: 'col-md-2 control-label'}, input_html: { class: 'form-control' }, wrapper_html: { class: 'col-md-10 form-inline' }, required: false %>
     </div>
     <div class="form-group is-empty">
-      <%= f.input :body, label: 'Mensagem:',label_html: { class: 'col-md-2 control-label'}, input_html: { class: 'form-control' }, wrapper_html: { class: 'col-md-10 form-inline'}, required: false %>
+      <%= f.input :body, label: 'Mensagem:',label_html: { class: 'col-md-2 control-label'}, input_html: { rows: 8, class: 'form-control' }, wrapper_html: { class: 'col-md-10 form-inline'}, required: false, as: :text %>
     </div>
 
     <div class="form-group">
