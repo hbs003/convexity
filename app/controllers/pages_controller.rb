@@ -21,6 +21,10 @@ class PagesController < ApplicationController
 
   end
 
+  def contact
+    @user = current_user
+  end
+
 
 
 
