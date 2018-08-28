@@ -3,6 +3,6 @@ class MessageMailer < ApplicationMailer
   def contact(message)
     @message = message
 
-    mail to: "hbs003@hotmail.com"
+    mail to: "henrique.silva@gosengenharia.com"
   end
 end
