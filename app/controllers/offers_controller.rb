@@ -33,6 +33,7 @@ class OffersController < ApplicationController
 
   def show
     @offer = Offer.find(params[:id])
+    session[:last_offer_id] = @offer.id
   end
 
   private

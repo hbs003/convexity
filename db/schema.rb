@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_160455) do
+ActiveRecord::Schema.define(version: 2018_08_30_163843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2018_08_28_160455) do
     t.datetime "updated_at", null: false
     t.string "photo"
     t.boolean "risk", default: false, null: false
+    t.string "deposit"
     t.index ["offer_id"], name: "index_investments_on_offer_id"
     t.index ["user_id"], name: "index_investments_on_user_id"
   end
