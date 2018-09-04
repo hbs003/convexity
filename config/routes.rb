@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations"}
   root to: 'pages#home'
   get "/faq", to: "pages#faq", as: "faq"
+  get "/terms", to: "pages#terms", as: "terms"
   get "/risk", to: "pages#risk", as: "risk"
   get "/coming-soon", to: "pages#coming_soon", as: "coming_soon"
   resources :subscribers, only: [:create, :new, :index]

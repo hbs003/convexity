@@ -1,9 +1,9 @@
-Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+xRails.application.configure do
+  config.action_mailer.default_url_options = { host: "http:www.ycap.com.br" }
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.force_ssl = true
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -70,7 +70,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method     = :postmark
   config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
-  config.action_mailer.default_url_options = { host: "convexity.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "ycap.com.br" }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
