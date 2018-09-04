@@ -21,6 +21,9 @@ class PagesController < ApplicationController
 
   end
 
+  def terms
+  end
+
 
 
 
