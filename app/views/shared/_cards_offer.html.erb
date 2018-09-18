@@ -1,0 +1,26 @@
+<div class="bodycard">
+  <% @offers.each do |offer| %>
+    <%= link_to offer_path(offer) do %>
+      <div class="c-card">
+        <% if offer.enterprise.photo == nil %>
+          <div class="c-card__header" style="background-image: url('http://www.kolszewski.com/images/swimming.jpg?v5');">
+        <% else %>
+          <div class="c-card__header" style="background-image:url('<%= cl_image_path offer.enterprise.photo %>')">
+        <% end %>
+          <button class="c-button c-button--join" type="button">Empresa: <%= offer.enterprise.name %></button>
+        </div>
+        <div class="c-card__content">
+          <p class="c-card__details">
+            <span class="c-card__description">Valor mínimo do investimento:</span>
+            <span class="c-card__amount">R$<%= offer.pu %>,00</span>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+
+

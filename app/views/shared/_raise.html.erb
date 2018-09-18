@@ -3,33 +3,4 @@
   <h2>Invista Agora<span class="point-orange">.</span></h2>
   <h3>Veja abaixo todas as melhores opções de investimentos disponíveis no momento:</h3>
 
-
-  <div class="row">
-
-    <% @offers.each do |offer| %>
-      <%= link_to offer_path(offer) do %>
-        <div class="col-xs-12 col-sm-12">
-          <div class="card" >
-            <div class="card-container">
-              <% if offer.enterprise.photo == nil %>
-                <div class="card-raise" style="background-image:linear-gradient(-225deg, rgba(30,30,30,0.4) 0%, rgba(30,30,30,0.1) 50%),  url('http://nestelpropertiesltd.com/admin/images/10client.jpg')">
-                </div>
-              <% else %>
-                <div class="card-raise" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path offer.enterprise.photo %>')">
-                </div>
-              <% end %>
-              <div class="card-title">
-                <h3 style="color:black">Empresa: <%= offer.enterprise.name %></h3>
-              </div>
-              <div class="card-desc">
-                Objetivo: <%= offer.description %>
-                Valor mínimo do investimento: R$<%= offer.pu %>,00
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
 </div>
