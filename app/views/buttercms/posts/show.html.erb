@@ -1,99 +1,90 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blog Template</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
 
-    <meta property="og:type" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:title" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:description" content="" />
-    <meta name="twitter:site" content="">
-    <meta name="twitter:creator" content="">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
+    <title>Blog convexit|YC|apital</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link href="./styles/styles.css" rel="stylesheet">
+    <!-- Loading animation -->
+    <script src="js/pace.min.js"></script>
+
+    <!-- Bootstrap core CSS and Material Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap-material-design.css" rel="stylesheet">
+    <link href="css/ripples.min.css" rel="stylesheet">
+    <link href="css/material-scrolltop.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/material-blog.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
-  <body>
-    <!-- BEGIN BLOG HEADER -->
-    <div class="section-blog-header">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-10 col-md-offset-1 col-sm-12">
-            <h3>Join thousands of subscribers and get our monthly newsletter!</h3>
-            <form action="" method="post">
-              <input type="email" value="" name="EMAIL" class="required email" placeholder="Email Address">
-              <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-            </form>
-          </div>
-        </div>
-      </div>
+
+  <body style="margin:100px">
+
+    <%= content_for :html_title, @post.seo_title %>
+    <%= content_for :meta_description, @post.meta_description %>
+
+    <div class="navbar navbar-material-blog navbar-primary navbar-absolute-top">
+      <%= render :partial => 'navbar' %>
     </div>
-    <!-- END BLOG HEADER -->
+    <!-- Post title -->
+    <h2><%= @post.title %></h2>
 
-    <!-- BEGIN BLOG POST -->
-    <div class="section-blog-post">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="post-container">
-              <a class="back" href="./index.html">Back to all posts</a>
+    <!-- Post author -->
+    <p>
+      Autor: <%= @post.author.first_name %> <%= @post.author.last_name %>
+    </p>
 
-              <h1>Article title</h1>
+    <!-- Post categories -->
+    <% @post.categories.each do |category| %>
+      <%= category.name %>
+    <% end %>
 
-              <span class="by">Posted by <strong>John Strong</strong> on <strong>March 15, 2017</strong></span>
+    <!-- Publish date -->
+    <p><%= Time.parse(@post.published).strftime('%B %d, %Y') %></p>
 
-              <div class="featured-image">
-                <img src="https://d2devwt40at1e2.cloudfront.net/api/file/FNVJdJWTu6N0tIwhx8AA" width="100%">
-              </div>
+    <!-- Post body -->
+    <%= @post.body.html_safe %>
 
-              <div class="post-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra nec ligula vitae finibus. Phasellus finibus maximus sem a pellentesque. Pellentesque tristique sagittis odio, quis posuere ligula volutpat sed. In hac habitasse platea dictumst. Etiam molestie semper massa. Sed semper justo a tortor pulvinar, sit amet blandit massa pulvinar. Etiam non lorem ac nisi placerat tincidunt vel sit amet libero. Morbi vel suscipit nulla. Sed diam justo, vestibulum eu diam eget, egestas rhoncus est. In hac habitasse platea dictumst. Nam sodales velit vitae ex posuere tempus. Phasellus eu erat pharetra, varius eros eget, lobortis turpis. Donec iaculis massa ac interdum cursus.</p>
+    <!-- Link to Next Post -->
+    <% if @next_post %>
+      <%= link_to @next_post.title, buttercms_post_path(@next_post.slug), :title => @next_post.title %>
+    <% end %>
 
-                <ul>
-                  <li>Pellentesque finibus pharetra sollicitudin.</li>
-                  <li>Duis bibendum ex nec blandit pulvinar.</li>
-                  <li>Phasellus aliquet vel ex eget hendrerit.</li>
-                </ul>
+    <!--
+    // For sharing, we recommend https://www.addthis.com/get/sharing or https://sumome.com/app/share
+    -->
 
-                <p>Morbi venenatis varius urna efficitur tincidunt. Suspendisse dolor mi, congue eget commodo ac, congue quis odio. Sed neque elit, tempor ac tempus convallis, posuere feugiat ex. Duis ut nulla sem. Maecenas ultrices feugiat lacus, sit amet commodo tellus porttitor ac. Proin non mauris id est laoreet sodales. Curabitur ut purus lacus. Duis laoreet velit ac risus gravida aliquet. Sed nisi nibh, tempus vel cursus in, venenatis nec nulla. Nam mi sapien, rutrum quis arcu quis, sollicitudin ultrices dolor. Praesent at sapien enim. Aliquam erat volutpat. Integer quis nisl iaculis lectus feugiat viverra in et mauris. Fusce interdum eu dui et mattis.</p>
-              </div>
+    <div id="disqus_thread" style="margin: 50px;"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'buttercms';
 
-              <div class="post-author">
-                <div class="headshot">
-                  <img src="https://dl.dropboxusercontent.com/u/598519/chase.png" width="100%">
-                </div>
-                <p><strong>About the author:</strong> Chase Coleman is co-founder of ButterCMS and a developer. He loves building tools that make life easier for developers. You can find him at @buttercms and chase@buttercms.com  where he will definitely reply to you.</p>
-              </div>
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
 
-              <div id="disqus_thread"></div>
-              <script>
-              var disqus_config = function () {
-              this.page.url = convexity.herokuapp.com;  // Replace PAGE_URL with your page's canonical URL variable
-              this.page.identifier = convexit|YC|apital; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-              };
-
-              (function() { // DON'T EDIT BELOW THIS LINE
-              var d = document, s = d.createElement('script');
-              s.src = 'https://https-convexity-herokuapp-com.disqus.com/embed.js';
-              s.setAttribute('data-timestamp', +new Date());
-              (d.head || d.body).appendChild(s);
-              })();
-              </script>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ba281835000d67f"></script>
   </body>
 </html>
 

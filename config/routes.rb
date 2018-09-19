@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-  get 'messages/new'
   scope :module => 'buttercms' do
     get '/categories/:slug' => 'categories#show', :as => :buttercms_category
     get '/author/:slug' => 'authors#show', :as => :buttercms_author
@@ -13,10 +11,12 @@ Rails.application.routes.draw do
     get '/blog(/page/:page)' => 'posts#index', :defaults => {:page => 1}, :as => :buttercms_blog
     get '/blog/:slug' => 'posts#show', :as => :buttercms_post
 
+
   end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: "registrations"}
   root to: 'pages#home'
+  get "/about", to: "pages#about", as: "about"
   get "/material", to: "pages#material", as: "material"
   get "/terms", to: "pages#terms", as: "terms"
   get "/faq", to: "pages#faq", as: "faq"
