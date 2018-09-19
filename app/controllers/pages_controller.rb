@@ -27,6 +27,9 @@ class PagesController < ApplicationController
   def material
   end
 
+  def about
+  end
+
 
 
 

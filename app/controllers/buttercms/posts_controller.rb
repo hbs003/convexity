@@ -7,6 +7,4 @@ class Buttercms::PostsController < Buttercms::BaseController
     @post = ButterCMS::Post.find(params[:slug])
   end
 
-
-
 end
