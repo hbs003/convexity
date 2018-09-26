@@ -40,5 +40,6 @@ Rails.application.routes.draw do
   get "investments/:id/rejected", to: "investments#rejected", as: "rejected"
   get "/message", to: "messages#new", as: "message"
   post "messages", to: "messages#create"
+  get 'offers',     to: 'offers#index'
 
 end
