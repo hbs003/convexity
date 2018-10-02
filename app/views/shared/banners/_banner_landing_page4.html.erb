@@ -1,0 +1,21 @@
+<div class="banner banner-landing-page4 devise-container2" style="background-size: cover;">
+  <div class="devise-content-container" style="margin:120px;">
+    <%= render "shared/count" %>
+    <h1 style="color:black;">VAGAS LIMITADAS. GARANTA A SUA.</h1>
+    <p style="color:black;">Em breve, todos os investidores terão acesso aos produtos antes restritos às grandes gestoras de fortunas. Participe dessa onda de democratização dos investimentos que geram grande retorno.</p>
+    <b>VAGAS LIMITADAS. GARANTA A SUA.</b>
+
+
+   <%= form_for :subscriber, url: subscribers_path do |f| %>
+     <span><label for="email" style="color:black;">Email</label></span>
+     <div class="form-inputs" >
+     <%= f.text_field :email, class: 'form-control', placeholder: 'Insira aqui o seu email.' %>
+     </div>
+
+     <div class="form-actions" style="width:300px;text-align: center; margin:0 auto;">
+      <%= f.submit "Quero Investir", {class: "button-form--next2"}%>
+     </div>
+
+   <%end%>
+  </div>
+</div>
