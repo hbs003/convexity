@@ -33,10 +33,21 @@ class OffersController < ApplicationController
 
   def show
     @offer = Offer.find(params[:id])
+    @invested = 100*set_max(@offer)
+    @investors = investors(@offer)
     session[:last_offer_id] = @offer.id
   end
 
   private
+
+  def set_max(offer)
+    total_invested = Investment.where(status: "pendente").where(offer_id: offer.id).sum(:amount)
+  end
+
+  def investors(offer)
+    investments = Investment.where(status: "pendente").where(offer_id: offer.id)
+  end
+
 
   def offer_params
     params.require(:offer).permit(:description, :share, :pu, :units, :enterprise_id)

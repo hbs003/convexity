@@ -1,0 +1,65 @@
+<body>
+  <div id=countdown-wrap>
+    <div id="goal">R$<%= @offer.pu*@offer.units %>,00</div>
+    <div id="glass">
+      <div id="progress" style="width:<%= @invested/@offer.units %>%;">
+      </div>
+    </div>
+    <div class="goal-stat">
+      <span class="goal-number"><%= @invested/@offer.units %>%</span>
+      <span class="goal-label">investido</span>
+    </div>
+    <div class="goal-stat">
+      <span class="goal-number">R$<%= @invested*@offer.pu/100 %>,00</span>
+      <span class="goal-label">total captado</span>
+    </div>
+    <div class="goal-stat">
+      <span class="goal-number"><div id="countdown"></div></span>
+      <span class="goal-label">dias restantes</span>
+    </div>
+    <div class="goal-stat">
+      <span class="goal-number"><%= @investors.count %></span>
+      <span class="goal-label">investimento(s)</span>
+
+    </div>
+  </div>
+  <script type="text/javascript">
+
+      CountDownTimer('<%= @offer.final_date %> 10:1 AM', 'countdown');
+      CountDownTimer('<%= @offer.final_date %> 10:1 AM', 'newcountdown');
+
+      function CountDownTimer(dt, id)
+      {
+          var end = new Date(dt);
+
+          var _second = 1000;
+          var _minute = _second * 60;
+          var _hour = _minute * 60;
+          var _day = _hour * 24;
+          var timer;
+
+          function showRemaining() {
+              var now = new Date();
+              var distance = end - now;
+              if (distance < 0) {
+
+                  clearInterval(timer);
+                  document.getElementById(id).innerHTML = '0';
+
+                  return;
+              }
+              var days = Math.floor(distance / _day);
+              var hours = Math.floor((distance % _day) / _hour);
+              var minutes = Math.floor((distance % _hour) / _minute);
+              var seconds = Math.floor((distance % _minute) / _second);
+
+              document.getElementById(id).innerHTML = days /*+ ' days'*/;
+              //document.getElementById(id).innerHTML += hours + 'hrs ';
+              //document.getElementById(id).innerHTML += minutes + 'mins ';
+              //document.getElementById(id).innerHTML += seconds + 'secs';
+          }
+
+          timer = setInterval(showRemaining, 1000);
+      }
+  </script>
+</body>

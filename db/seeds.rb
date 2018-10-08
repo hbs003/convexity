@@ -44,6 +44,7 @@ offers_attributes = [
     share: "10",
     pu: "1000",
     units: "1000",
+    final_date: "10/12/2018",
 
   },
   {
@@ -52,6 +53,7 @@ offers_attributes = [
     share: "15",
     pu: "500",
     units: "1500",
+    final_date: "10/12/2018",
 
   },
 ]
