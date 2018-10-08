@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: "registrations"}
   root to: 'pages#countdown'
+  get "/home", to: "pages#home", as: "home"
   get "/about", to: "pages#about", as: "about"
   # get "/countdown", to: "pages#countdown", as: "countdown"
   get "/material", to: "pages#material", as: "material"
