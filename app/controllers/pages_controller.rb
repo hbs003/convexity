@@ -1,6 +1,6 @@
 require 'buttercms-ruby'
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home, :countdown]
 
   def home
     @offers = Offer.all.order("created_at DESC").first(3)

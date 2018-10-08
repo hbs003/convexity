@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: "registrations"}
-  root to: 'pages#home'
+  root to: 'pages#countdown'
   get "/about", to: "pages#about", as: "about"
-  get "/countdown", to: "pages#countdown", as: "countdown"
+  # get "/countdown", to: "pages#countdown", as: "countdown"
   get "/material", to: "pages#material", as: "material"
   get "/terms", to: "pages#terms", as: "terms"
   get "/faq", to: "pages#faq", as: "faq"
