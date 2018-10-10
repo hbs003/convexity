@@ -24,14 +24,14 @@
         <%= link_to t(".blog", default: "Blog"), buttercms_blog_path, class: "navbar-wagon-item navbar-wagon-link" %>
       </div>
     </div>
-    <div class="parent">
+    <div class="parent" style="min-height: 100vh;">
       <div class="container" >
         <div class="left">
-          <p id="countdown" style="margin-left: -100px; padding-right: 10px;"></p>
+          <p id="countdown" style="margin-left: -50px; padding-right: 10px; width: 350px;"></p>
         </div>
-        <div class="right" style="margin-left: -40px;">
+        <div class="right" style="margin-left: -40px; width: 350px;">
           <h1>convexit|YC|apital</h1>
-          <p class="text">Em breve, todos os investidores terão acesso aos produtos antes restritos às grandes gestoras de fortunas. Participe dessa onda de democratização dos investimentos que geram grande retorno.<b>VAGAS LIMITADAS. GARANTA A SUA.</b></p>
+          <p class="text" style="width: 350px;">Em breve, todos os investidores terão acesso aos produtos antes restritos às grandes gestoras de fortunas. Participe dessa onda de democratização dos investimentos que geram grande retorno.<b>VAGAS LIMITADAS. GARANTA A SUA.</b></p>
         </div>
         <div class="clear"></div>
         <div class="contactform" style="margin-left: -40px;">
@@ -52,7 +52,7 @@
     </script>
   </div>
   <script type="text/javascript">
-    var countDownDate = new Date("Jan 10, 2019 23:59:59").getTime(); // Set the launch date here
+    var countDownDate = new Date("Jan 10, 2019 8:59:59").getTime(); // Set the launch date here
       var x = setInterval(function() {
           var now = new Date().getTime();
           var distance = countDownDate - now;
