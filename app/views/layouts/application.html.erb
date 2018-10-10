@@ -32,11 +32,13 @@
         </div>
        <% end %>
     <% end %>
-     <% unless action_name == "countdown" %>
-       <%= render 'shared/navbar' %>
+    <% unless action_name == "countdown" %>
+      <%= render 'shared/navbar' %>
     <% end %>
     <%= yield %>
-    <%= render 'shared/footer' %>
+    <% unless action_name == "countdown" %>
+      <%= render 'shared/footer' %>
+    <% end %>
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

@@ -1,42 +1,75 @@
-<div class="navbar-wagon navbar-lp">
-    <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <span class="name-logo">|YC|</span>
-  <% end %>
+<html>
+  <head>
 
-  <!-- Right Navigation -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <div class="estilo">
+    <div class="navbar-wagon navbar-lp">
+        <!-- Logo -->
+      <%= link_to root_path, class: "navbar-wagon-brand" do %>
+        <span class="name-logo">|YC|</span>
+      <% end %>
 
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%= link_to root_path, class: "navbar-wagon-brand" do %>
-      <span class="name-logo">convexit|YC|apital</span>
-    <% end %>
+      <!-- Right Navigation -->
 
-    <%= link_to t(".blog", default: "Blog"), buttercms_blog_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+        <%= link_to t(".blog", default: "Blog"), buttercms_blog_path, class: "navbar-wagon-item navbar-wagon-link"%>
+      </div>
+
+      <div class="navbar-wagon-item hidden-md hidden-lg">
+
+        <%= link_to t(".blog", default: "Blog"), buttercms_blog_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      </div>
+    </div>
+    <div class="parent">
+      <div class="container" >
+        <div class="left">
+          <p id="countdown" style="margin-left: -100px; padding-right: 10px;"></p>
+        </div>
+        <div class="right" style="margin-left: -40px;">
+          <h1>convexit|YC|apital</h1>
+          <p class="text">Em breve, todos os investidores terão acesso aos produtos antes restritos às grandes gestoras de fortunas. Participe dessa onda de democratização dos investimentos que geram grande retorno.<b>VAGAS LIMITADAS. GARANTA A SUA.</b></p>
+        </div>
+        <div class="clear"></div>
+        <div class="contactform" style="margin-left: -40px;">
+          <%= form_for :subscriber, url: subscribers_path do |f| %>
+           <div class="form-inputs" style="width:320px; margin:0 auto; background-color: white; border-radius: 5px;" >
+             <%= f.text_field :email, class: 'form-control', placeholder: 'Insira aqui o seu email.' %>
+           </div>
+
+           <div class="form-actions" style="width:320px;text-align: center; margin:0 auto;">
+             <%= f.submit "Quero Investir", {class: "button-form--next4"}%>
+           </div>
+
+          <%end%>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="countdown.js">
+    </script>
   </div>
+  <script type="text/javascript">
+    var countDownDate = new Date("Jan 10, 2019 23:59:59").getTime(); // Set the launch date here
+      var x = setInterval(function() {
+          var now = new Date().getTime();
+          var distance = countDownDate - now;
 
-  <div class="navbar-wagon-item hidden-md hidden-lg">
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    <%= link_to t(".blog", default: "Blog"), buttercms_blog_path, class: "navbar-wagon-item navbar-wagon-link" %>
-  </div>
-</div>
-<div class="banner banner-landing-page4 devise-container2" style="background-size: cover;">
-  <div class="devise-content-container" style="margin:120px;">
-    <%= render "shared/count" %>
-    <h1 style="color:black;">VAGAS LIMITADAS. GARANTA A SUA.</h1>
-    <p style="color:black;">Em breve, todos os investidores terão acesso aos produtos antes restritos às grandes gestoras de fortunas. Participe dessa onda de democratização dos investimentos que geram grande retorno.</p>
-    <b>VAGAS LIMITADAS. GARANTA A SUA.</b>
+          document.getElementById("countdown").innerHTML = '<div class="block1">' + '<span class="day">' + days + "</span>" + "</div><div class='block2'>DIAS</div>" + '<span class="hms">' + hours + '</span>' + "H " + '<span class="hms">' + minutes + '</span>' +  "M " + '<span class="hms">' + seconds + '</span>' + "S";
 
+          // Text to display post countdown timer expiration
+          if (distance < 0) {
+              clearInterval(x);
+              document.getElementById("countdown").innerHTML = "EXPIRED";
+          }
+      }, 1000);
+  </script>
+</html>
 
-   <%= form_for :subscriber, url: subscribers_path do |f| %>
-     <span><label for="email" style="color:black;">Email</label></span>
-     <div class="form-inputs" >
-     <%= f.text_field :email, class: 'form-control', placeholder: 'Insira aqui o seu email.' %>
-     </div>
-
-     <div class="form-actions" style="width:300px;text-align: center; margin:0 auto;">
-      <%= f.submit "Quero Investir", {class: "button-form--next2"}%>
-     </div>
-
-   <%end%>
-  </div>
-</div>
