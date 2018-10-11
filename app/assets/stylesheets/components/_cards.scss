@@ -88,6 +88,9 @@ margin-top: 12vh;
   justify-content: center;
   padding-right: 16px;
   padding-left: 90px;
+  p{
+      color: $purple;
+    }
   }
 
   .index-number {
@@ -124,6 +127,11 @@ margin-top: 12vh;
   padding-left: 80px;
   padding-right: 80px;
   margin-bottom: 5vh;
+  color: #696969;
+
+  h2{
+    color: #696969;
+  }
 
   p{
    text-align:center;
