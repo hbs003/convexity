@@ -1,0 +1,58 @@
+###################################
+### GENERAL, HEADER & META TAGS ###
+###################################
+
+logo: "app/assets/images/yc.jpg"                                                                        # Logo for your blog. Leave empty if you don't have one
+blog_name: "convexit|YC|apital"                                                              # Give your blog a meanungful name.
+title: "convexit|YC|apital - investimento em startups"             # Give your blog a meaningful title. This is used for the HTML title attribute
+title_short: "YC"                                                            # Place the name of your blog or a short title here
+short_description: "Democratização de investimentos sofisticados. "         # Short description for your blog
+meta_description: "YC - Agora todas as pessoas terão acesso as melhores oportunidades de investimentos em startups."  # meta description tag
+meta_author: "Henrique Silva"                                                         # meta tag for author
+keywords: "YC, equity crowdfunding, startups"                                          # your keywords
+og_logo: "app/assets/images/yc.jpg"   # OpenGraph logo
+geo_position: "50.00; 8.27"                                                     # Geo tags for position and address
+geo_address: "Opoloo, 55116 Mainz"                                              # Geo tags for position and address
+
+
+##############
+### SOCIAL ###
+##############
+
+# Your Twitter and Google+ profile URL
+# Leave empty if you don't want to display inside the footer
+twitter_url: 'http://twitter.com/opoloo'
+gplus_url: 'https://plus.google.com/+Opoloo'
+
+
+#################
+### ATOM FEED ###
+#################
+
+feed_title: "convexit|YC|apital - investimento em startups"        # give your feed a title
+feed_logo: "app/assets/images/yc.jpg" # full URL to the feed logo. Aspect ratio should be 2:1
+feed_favicon: "app/assets/images/favicon.ico" # full URL to the favicon. Aspect ratio should be 1:1
+
+
+#####################
+### APP SPECIFICS ###
+#####################
+
+refresh_sitemap: false
+
+hero_images: ["lines_default_01.png", "lines_default_02.png", "lines_default_03.png"]
+
+articles_per_page: 10 # Pagination: How many articles should be desplayed per page?
+
+# Your apps secret token. Generate a new one with 'rake secret' and paste it below
+secret_token: ENV['LINE_TOKEN']
+# Environment dependent configuration. Place your URLs here
+development:
+  host: "localhost:3000"
+  from_email: 'contato@ycap.com.br'
+test:
+  host: "test.local"
+  from_email: 'contato@ycap.com.br'
+production:
+  host: "ycap.com.br"
+  from_email: 'contato@ycap.com.br'
