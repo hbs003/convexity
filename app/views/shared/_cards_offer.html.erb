@@ -10,10 +10,26 @@
           <button class="c-button c-button--join" type="button">Empresa: <%= offer.enterprise.name %></button>
         </div>
         <div class="c-card__content">
-          <p class="c-card__details">
-            <span class="c-card__description">Valor mínimo do investimento:</span>
-            <span class="c-card__amount">R$<%= offer.pu %>,00</span>
+          <p class="c-card__details" style="width:75%;">
+            <span class="c-card__amount">Valor mínimo do investimento:R$<%= offer.pu %>,00</span>
           </p>
+        </div>
+        <div class="position hidden-xs">
+          <div class="candidatos color1">
+              <div class="parcial">
+                  <div class="info">
+                      <div class="nome"></div>
+
+                      <% total_invested = Investment.where(status: "pendente").where(offer_id: offer.id).sum(:amount) %>
+                      <% @invested = 100*total_invested %>
+                      <div class="percentagem-num"><%= @invested/offer.units %>%</div>
+                  </div>
+                  <div class="progressBar">
+                      <div class="percentagem" style="width:<%= @invested/offer.units %>%;"></div>
+                  </div>
+                  <div class="partidas">Total Captado</div>
+              </div>
+          </div>
         </div>
       </div>
     <% end %>
