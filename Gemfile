@@ -33,6 +33,7 @@ gem 'postmark-rails'
 gem "letter_opener", group: :development
 gem 'pg_search'
 gem 'lines-engine'
+gem "aws-sdk-s3", require: false
 
 
 
