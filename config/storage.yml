@@ -24,7 +24,7 @@ local:
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
 #   service: AzureStorage
-#   storage_account_name: your_account_name
+#   storage_account_name: convexity
 #   storage_access_key: <%= Rails.application.credentials.dig(:azure_storage, :storage_access_key) %>
 #   container: your_container_name
 
@@ -32,3 +32,12 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+
+amazon:
+  service: S3
+  access_key_id: <%= ENV['AWS_ACESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AWS_SECRET_KEY_ID'] %>
+  bucket: <%= ENV['AWS_BUCKET'] %>
+  region: <%= ENV['AWS_REGION'] %>
+
+
