@@ -5,11 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
 
-    <title>Material Blog</title>
 
     <!-- Loading animation -->
     <script src="js/pace.min.js"></script>
@@ -34,7 +30,27 @@
   <body>
 
     <div class="navbar navbar-material-blog navbar-primary navbar-absolute-top">
-      <%= render "buttercms/posts/navbar" %>
+      <div class="navbar-image" style="background-color: lightblue;"></div>
+
+      <div class="navbar-wrapper container">
+        <div class="navbar-header">
+
+          <a class="navbar-brand" href="/">|YC|</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/about">Sobre nós</a></li>
+            <li><a href="/message">Contato</a></li>
+            <li><a href="/">Página Principal</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div class="container blog-content">
@@ -62,7 +78,89 @@
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
 
-          <%= render "buttercms/posts/sidebar" %>
+                    <!-- <div class="sidebar-module">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+          </div> --><!-- /.sidebar-module -->
+
+          <div class="sidebar-module">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h4>Sobre nós</h4>
+                <p>Vivemos em uma nova era aonde o acesso a oportunidades diferenciadas de investimentos precisa ser universalizado. <em>Estamos aqui para trazer as melhores opções de investimentos alternativos para você.</em> Com isso esperamos contribuir para todo o ecossistema empresarial brasileiro, facilitando que investidores se conectem com os empreendedores mais qualificados do país.</p>
+              </div>
+            </div>
+          </div><!-- /.sidebar-module -->
+
+          <!-- <div class="sidebar-module">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h4>Categorias</h4>
+                <ol class="categories list-unstyled">
+                  <li>
+                    <a class="label label-light label-primary" href="/blog">Investidores</a>
+                    <span class="label label-light label-default pull-right">2</span>
+                  </li>
+                  <li>
+                    <a class="label label-light label-warning" href="/blog">Empreendedores</a>
+                    <span class="label label-light label-default pull-right">2</span>
+                  </li>
+                  <li>
+                    <a class="label label-light label-info" href="/blog">Tech</a>
+                    <span class="label label-light label-default pull-right">2</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div> --><!-- /.sidebar-module -->
+
+
+
+          <div class="sidebar-module">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h4>Newsletter</h4>
+                <%= form_for :subscriber, url: subscribers_path do |f| %>
+                  <div class="form-group label-floating">
+                    <label class="control-label" for="email">E-mail</label>
+                    <%= f.text_field :email, id:'email', class:"form-control input-sm" %>
+                  </div>
+                  <div class="form-actions">
+                    <%= f.submit "Cadastre-se!", {class: "btn btn-default btn-raised btn-sm btn-block"}%>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          </div><!-- /.sidebar-module -->
+
+          <div class="sidebar-module">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h4>Ofertas Disponíveis</h4>
+                <ol class="list-unstyled">
+                  <li><a href="/offers">Startups</a></li>
+                  <li><a href="/offers">Real Estate</a></li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.sidebar-module -->
+
+
+
+
+          <div class="sidebar-module">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h4>Redes Sociais</h4>
+                <ol class="list-unstyled">
+                  <li><a href="#">Facebook</a></li>
+                  <li><a href="#">Google+</a></li>
+                  <li><a href="#">Twitter</a></li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.sidebar-module -->
 
         </div><!-- /.blog-sidebar -->
 
